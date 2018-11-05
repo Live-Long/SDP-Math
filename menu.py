@@ -1,10 +1,8 @@
 from tkinter import *
 
-import os
 from PIL import Image, ImageTk
 
 # window call and size
-from ipython_genutils.py3compat import execfile
 
 root = Tk()
 root.title("Academedia ver. Alpha 1.1")
@@ -141,19 +139,10 @@ def run_spiderweb():
 
 
 
-
-
-
-
-
-
-
-
 ########   Math Functions   #########
 def run_bayesian_regression():
     from math_done import bayesian_regression
     root.execfile('bayesian_regression.py')
-
 
 def run_brownian_motion():
     from math_done import geometric_brownian_motion
@@ -190,11 +179,6 @@ def run_histogram():
     root.execfile('histogram.py')
 
 
-def run_monte_carlo():
-    from math_done import monte_carlo_integration
-    root.execfile('monte_carlo_integration.py')
-
-
 def run_newton_iteration():
     from math_done import newton_iteration
     root.execfile('newton_iteration.py')
@@ -204,10 +188,54 @@ def run_riemann_sum():
     from math_done import RiemannSum
     root.execfile('RiemannSum.py')
 
+##########    Math 2 Functions #########
+
+def run_3D_plot():
+    from math2 import animation_3D_plot
+    root.execfile('animation_3D_plot.py')
+
+def run_area_chart():
+    from math2 import area_chart
+    root.execfile('area_chart.py')
+
+def run_bar_chart():
+    from math2 import bar_chart
+    root.execfile('bar_chart.py')
+
+def run_donut_plot():
+    from math2 import donut_plot
+    root.execfile('donut_plot.py')
+
+def run_gapminder_animation():
+    from math2 import gapminder_animation
+    root.execfile('gapminder_animation.py')
+
+def run_monte_carlo():
+    from math2 import monte_carlo_integration
+    root.execfile('monte_carlo_integration.py')
+
+def run_multiple_lines_chart():
+    from math2 import multiple_lines_chart
+    root.execfile('multiple_lines_chart.py')
+
+def run_scatter_plot():
+    from math2 import scatter_plot
+    root.execfile('scatter_plot.py')
 
 def run_taylor_series():
-    from math_done import taylor_series
+    from math2 import taylor_series
     root.execfile('taylor_series.py')
+
+#######################################
+
+
+########   Chemistry Functions ##########
+
+def run_bond_antibond():
+    from chem import bond_antibond
+    root.execfile('bond_antibond.py')
+
+#########################################
 
 
 ########   Misc Functions   #########
@@ -218,7 +246,7 @@ def run_barnsley_fern():
 
 
 def run_bubble_sort():
-    from miscc import bubble_sort_UI, bubble_sort
+    from miscc import bubble_sort_UI
     root.execfile('bubble_sort_UI.py')
 
 
@@ -646,15 +674,6 @@ def mathsmenu():
                 command=run_histogram,
                 width=30).grid()
 
-    b9 = Button(mathroot,
-                bg="gray",
-                fg="white",
-                text="Monte Carlo Integration",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                command=run_monte_carlo,
-                width=30).grid()
 
     b10 = Button(mathroot,
                  bg="gray",
@@ -699,6 +718,117 @@ def mathsmenu():
                    width=10,
                    height=1,
                    command=lambda: [mathroot.destroy(), recall_window()]).grid()
+########################################
+
+def mathsmenu2():
+    root.withdraw()
+    mathroot2 = Tk()
+    mathroot2.title("Academedia - Mathematics Menu 2")
+    mathroot2.geometry("600x700")
+
+    Label(mathroot2, text="Mathematics Menu 2", font="Eurostile 20 bold", padx=155, pady=20).grid()
+
+    b0 = Button(mathroot2,
+                bg="gray",
+                fg="white",
+                text="3D Plot",
+                bd=12,
+                relief="raised",
+                font="Calibri 9 bold",
+                command=run_3D_plot,
+                width=30).grid()
+
+    b1 = Button(mathroot2,
+                bg="gray",
+                fg="white",
+                text="Area Chart",
+                bd=12,
+                relief="raised",
+                font="Calibri 9 bold",
+                command=run_area_chart,
+                width=30).grid()
+
+    b2 = Button(mathroot2,
+                bg="gray",
+                fg="white",
+                text="Bar Chart",
+                bd=12,
+                relief="raised",
+                font="Calibri 9 bold",
+                command=run_bar_chart,
+                width=30).grid()
+
+    b3 = Button(mathroot2,
+                bg="gray",
+                fg="white",
+                text="Donut Chart",
+                bd=12,
+                relief="raised",
+                font="Calibri 9 bold",
+                command=run_donut_plot,
+                width=30).grid()
+
+    b4 = Button(mathroot2,
+                bg="gray",
+                fg="white",
+                text="Gapminder Animation",
+                bd=12,
+                relief="raised",
+                font="Calibri 9 bold",
+                command=run_gapminder_animation,
+                width=30).grid()
+
+    b5 = Button(mathroot2,
+                bg="gray",
+                fg="white",
+                text="Monte Carlo Integration",
+                bd=12,
+                relief="raised",
+                font="Calibri 9 bold",
+                command=run_monte_carlo,
+                width=30).grid()
+
+    b6 = Button(mathroot2,
+                bg="gray",
+                fg="white",
+                text="Multiple Lines Chart",
+                bd=12,
+                relief="raised",
+                font="Calibri 9 bold",
+                command=run_multiple_lines_chart,
+                width=30).grid()
+
+    b7 = Button(mathroot2,
+                bg="gray",
+                fg="white",
+                text="Scatter Plot",
+                bd=12,
+                relief="raised",
+                font="Calibri 9 bold",
+                command=run_scatter_plot,
+                width=30).grid()
+
+    b8 = Button(mathroot2,
+                bg="gray",
+                fg="white",
+                text="Taylor Series",
+                bd=12,
+                relief="raised",
+                font="Calibri 9 bold",
+                command=run_taylor_series,
+                width=30).grid()
+
+
+    exitb = Button(mathroot2,
+                   bg="gray",
+                   fg="white",
+                   text="Back",
+                   bd=12,
+                   relief="raised",
+                   font="Calibri 9 bold",
+                   width=10,
+                   height=1,
+                   command=lambda: [mathroot2.destroy(), recall_window()]).grid()
 
 
 ####################################
@@ -1009,21 +1139,27 @@ button1.configure(bg="#00008B", fg="white", font="Calibri 9 bold")
 button1.grid(padx=1, pady=2)
 
 
-button2 = Button(app, text="Mathematics", bd=12, relief="raised", command=mathsmenu, width=15)
-button2.configure(bg="#8B0000", fg="white", font="Calibri 9 bold")
-button2.grid(padx=1, pady=2)
-
-button3 = Button(app, text="Chemistry", bd=12, relief="raised", command=chemistrysmenu, width=15)
-button3.configure(bg="#006400", fg="white", font="Calibri 9 bold")
+button3 = Button(app, text="Mathematics", bd=12, relief="raised", command=mathsmenu, width=15)
+button3.configure(bg="#8B0000", fg="white", font="Calibri 9 bold")
 button3.grid(padx=1, pady=2)
 
-button4 = Button(app, text="Miscellaneous", bd=12, relief="raised", command=missmenu, width=15)
-button4.configure(bg="#BDB76B", font="Calibri 9 bold")
+button4 = Button(app, text="Mathematics 2", bd=12, relief="raised", command=mathsmenu2, width=15)
+button4.configure(bg="#8B0000", fg="white", font="Calibri 9 bold")
 button4.grid(padx=1, pady=2)
 
-button5 = Button(app, text="Exit", bd=12, relief="raised", command=sys.exit, width=15)
-button5.configure(bg="gray", fg="white", font="Calibri 9 bold")
+'''
+button5 = Button(app, text="Chemistry", bd=12, relief="raised", command=chemistrysmenu, width=15)
+button5.configure(bg="#006400", fg="white", font="Calibri 9 bold")
 button5.grid(padx=1, pady=2)
+'''
+
+button6 = Button(app, text="Miscellaneous", bd=12, relief="raised", command=missmenu, width=15)
+button6.configure(bg="#BDB76B", font="Calibri 9 bold")
+button6.grid(padx=1, pady=2)
+
+button7 = Button(app, text="Exit", bd=12, relief="raised", command=sys.exit, width=15)
+button7.configure(bg="gray", fg="white", font="Calibri 9 bold")
+button7.grid(padx=1, pady=2)
 
 # start event
 root.mainloop()
