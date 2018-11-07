@@ -202,8 +202,11 @@ Space: Pause physics simulation"""
 
 def run():
     doprof = 0
-    if not doprof:b
-        main()
+    if not doprof:
+        try:
+            main()
+        except Exception:
+            pass
     else:
         import cProfile, pstats
 
