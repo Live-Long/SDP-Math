@@ -192,7 +192,7 @@ def run():
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
-                return
+
             elif event.type == KEYDOWN and event.key == K_ESCAPE:
                 return
             elif event.type == MOUSEBUTTONDOWN:

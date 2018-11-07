@@ -190,6 +190,8 @@ def main():
     it initializes everything it needs, then runs in
     a loop until a stop event (escape or window closing) is recognized.
     """
+
+def run():
     # Initialize Everything
     pygame.init()
     screen = pygame.display.set_mode(SCREEN_DIM)
@@ -220,8 +222,9 @@ def main():
         # Handle Input Events
         for event in pygame.event.get():
             if event.type == QUIT:
+                #pygame.display.quit()
                 pygame.quit()
-                return
+
             elif event.type == KEYDOWN and event.key == K_ESCAPE:
                 return
         free_group.update()
@@ -230,9 +233,5 @@ def main():
         free_group.draw(screen)
         pygame.display.flip()
 
-
-def run():
-
-    main()
 
 run()

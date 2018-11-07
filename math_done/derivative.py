@@ -1,14 +1,13 @@
 #https://ryancheunggit.gitbooks.io/calculus-with-python/content/05Limits.html
 import numpy as np
 import matplotlib.pyplot as plt
-import sympy
 from sympy.abc import x
 from tkinter import *
-from tkinter import ttk
 from PIL import ImageTk,Image
 
 
 f = x**3-2*x-6
+
 
 def init():
 
@@ -30,13 +29,11 @@ def run(f):
     imgx = 600; imgy = 600
 
     root = Tk()
-    root.title("Random Fractal Spiral Generator")
+    root.title("Derivatives")
     root.geometry('{}x{}'.format(imgx, imgy))
 
     image = Image.new("RGB", (imgx, imgy))
     pixels = image.load()
-
-
 
     for i in range(len(dom)):
         plt.subplot(2, 2, i + 1)
@@ -50,6 +47,14 @@ def run(f):
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
     #os.remove(imgName)
+
+
+    for event in root.event.get():
+        if event.type == root.QUIT:
+            root.destroy()
+
     root.mainloop()
 
+
 run(f)
+

@@ -100,10 +100,11 @@ def main():
     while running:
         for event in pygame.event.get():
             if event.type == QUIT:
-                running = False
+                #running = False
                 pygame.quit()
             elif event.type == KEYDOWN and event.key == K_ESCAPE:
-                running = False
+                pygame.quit()
+                #running = False
             elif event.type == KEYDOWN and event.key == K_p:
                 pygame.image.save(screen, "balls_and_lines.png")
             elif event.type == KEYDOWN and event.key == K_e:

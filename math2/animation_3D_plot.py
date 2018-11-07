@@ -26,6 +26,8 @@ for angle in range(70, 210, 2):
 # Set the angle of the camera
     ax.view_init(30, angle)
 
+
+
 # Save it
     filename = 'PNG/ANIMATION/Volcano_step' + str(angle) + '.png'
 #plt.savefig(filename, dpi=96)

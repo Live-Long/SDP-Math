@@ -4,6 +4,7 @@ import pymc3 as pm
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 df=pd.read_csv('D:/SDP Math/math_done/thads2013n.txt',sep=',')  #needs Data Set
 df=df[df['BURDEN']>0]
 df=df[df['AGE1']>0]
@@ -26,3 +27,4 @@ with pm.Model() as model:
 pm.traceplot(trace)
 plt.show()
 print(np.mean([1 if obj<0 else 0 for obj in trace['x']]))
+
