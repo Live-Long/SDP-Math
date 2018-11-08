@@ -3,6 +3,8 @@ class Command:
     def execute(self,root): pass
 
 
+
+
 ##### PHYSICS COMMANDS ######
 
 class DoublePendulumCommand(Command):
@@ -70,7 +72,173 @@ class VerletRigidBodyCommand(Command):
         from phy import verlet_rigid_body_mouse
         root.execfile('verlet_rigid_body_mouse.py')
 
+##### PHYSICS 2 COMMANDS #####
 
+class ArrowsCommand(Command):
+    def execute(self, root):
+        from phy2 import arrows
+        root.execfile('arrows.py')
+
+
+class BallsandLinesCommand(Command):
+    def execute(self, root):
+        from phy2 import balls_and_lines
+        root.execfile('balls_and_lines.py')
+
+
+class Box2DCommand(Command):
+    def execute(self, root):
+        from phy2 import box2d_vertical_stack
+        root.execfile('box2d_vertical_stack.py')
+
+class BreakoutCommand(Command):
+    def execute(self, root):
+        from phy2 import breakout
+        root.execfile('breakout.py')
+
+
+class CopyPickleCommand(Command):
+    def execute(self, root):
+        from phy2 import copy_and_pickle
+        root.execfile('copy_and_pickle.py')
+
+
+class DeformableCommand(Command):
+    def execute(self, root):
+        from phy2 import deformable
+        root.execfile('deformable.py')
+
+
+class FlipperCommand(Command):
+    def execute(self, root):
+        from phy2 import flipper
+        root.execfile('flipper.py')
+
+class PlaygroundCommand(Command):
+    def execute(self, root):
+        from phy2 import playground
+        root.execfile('playground.py')
+
+
+class PointQueryCommand(Command):
+    def execute(self, root):
+        from phy2 import point_query
+        root.execfile('point_query.py')
+
+
+class SpiderwebCommand(Command):
+    def execute(self, root):
+        from phy2 import spiderweb
+        root.execfile('spiderweb.py')
+
+
+
+##### MATH COMMANDS #####
+class BayesianRegressionCommand(Command):
+    def execute(self, root):
+        from math_done import bayesian_regression
+        root.execfile('bayesian_regression.py')
+
+class BrownianMotionCommand(Command):
+    def execute(self, root):
+        from math_done import geometric_brownian_motion
+        root.execfile('geometric_brownian_motion.py')
+
+class DerivativesCommand(Command):
+    def execute(self, root):
+        from math_done import derivative
+        root.execfile('derivative.py')
+
+class EqGrapherCommand(Command):
+    def execute(self, root):
+        from math_done import Eq_grapher
+        root.execfile('Eq_grapher.py')
+
+class ExpDecayCommand(Command):
+    def execute(self, root):
+        from math_done import exponential_decay
+        root.execfile('exponential_decay.py')
+
+class FermatsSpiralCommand(Command):
+    def execute(self, root):
+        from math_done import Fermat_spiral
+        root.execfile('Fermat_spiral.py')
+
+class GeorgiasSpiralCommand(Command):
+    def execute(self, root):
+        from math_done import GeorgiasSpiral
+        root.execfile('GeorgiasSpiral.py')
+
+class HistogramComand(Command):
+    def execute(self, root):
+        from math_done import histogram
+        root.execfile('histogram.py')
+
+
+class NewtonIterationCommand(Command):
+    def execute(self, root):
+        from math_done import newton_iteration
+        root.execfile('newton_iteration.py')
+
+class RiemannSumCommand(Command):
+    def execute(self, root):
+        from math_done import RiemannSum
+        root.execfile('RiemannSum.py')
+
+
+##### MATH 2 COMMANDS #####
+
+class Plot3DCommand(Command):
+    def execute(self, root):
+        from math2 import animation_3D_plot
+        root.execfile('animation_3D_plot.py')
+
+
+class AreaChartCommand(Command):
+    def execute(self, root):
+        from math2 import area_chart
+        root.execfile('area_chart.py')
+
+
+class BarChartCommand(Command):
+    def execute(self, root):
+        from math2 import bar_chart
+        root.execfile('bar_chart.py')
+
+class DonutPlotCommand(Command):
+    def execute(self, root):
+        from math2 import donut_plot
+        root.execfile('donut_plot.py')
+
+
+class GapminderCommand(Command):
+    def execute(self, root):
+        from math2 import gapminder_animation
+        root.execfile('gapminder_animation.py')
+
+
+class MonteCarloCommand(Command):
+    def execute(self, root):
+        from math2 import monte_carlo_integration
+        root.execfile('monte_carlo_integration.py')
+
+
+class ScatterPlotCommand(Command):
+    def execute(self, root):
+        from math2 import scatter_plot
+        root.execfile('scatter_plot.py')
+
+
+class TaylorCommand(Command):
+    def execute(self, root):
+        from math2 import taylor_series
+        root.execfile('taylor_series.py')
+
+
+class MultipleLinesCommand(Command):
+    def execute(self, root):
+        from math2 import multiple_lines_chart
+        root.execfile('multiple_lines_chart.py')
 
 
 

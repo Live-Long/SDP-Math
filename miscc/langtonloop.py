@@ -56,7 +56,7 @@ class LangtonsLoop(Tk):
 
         self.color = ['black', 'blue', 'red', 'green', 'yellow', 'pink', 'white', 'cyan']
 
-        self.rules_str = np.loadtxt('misc\LangtonsLoopRules.txt', dtype='str')
+        self.rules_str = np.loadtxt('LangtonsLoopRules.txt', dtype='str')
         self.rules = np.array([[int(i) for i in rule] for rule in self.rules_str])
 
         zero = []

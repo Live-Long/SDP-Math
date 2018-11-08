@@ -94,137 +94,148 @@ def run_verlet_rigid_body():
 ########   Physics 2 Functions   #########
 
 def run_arrow():
-    from phy2 import arrows
-    root.execfile('arrows.py')
+    command = ArrowsCommand()
+    command.execute(root)
 
 def run_balls_lines():
-    from phy2 import balls_and_lines
-    root.execfile('balls_and_lines.py')
+    command = BallsandLinesCommand()
+    command.execute(root)
 
 def run_box2d_verticle():
-    from phy2 import box2d_vertical_stack
-    root.execfile('box2d_vertical_stack.py')
+    command = Box2DCommand()
+    command.execute(root)
 
 def run_breakout():
-    from phy2 import breakout
-    root.execfile('breakout.py')
+    command = BreakoutCommand()
+    command.execute(root)
 
 def run_copy_pickle():
-    from phy2 import copy_and_pickle
-    root.execfile('copy_and_pickle.py')
+    command = CopyPickleCommand()
+    command.execute(root)
 
 def run_flipper():
-    from phy2 import flipper
-    root.execfile('flipper.py')
+    command = FlipperCommand()
+    command.execute(root)
 
 def run_deformable():
-    from phy2 import deformable
-    root.execfile('deformable.py')
+    command = DeformableCommand()
+    command.execute(root)
 
 def run_newtons_cradle():
     from phy2 import newtons_cradle
     root.execfile('newtons_cradle.py')
 
 def run_playground():
-    from phy2 import playground
-    root.execfile('playground.py')
+    command = PlaygroundCommand()
+    command.execute(root)
 
 def run_point_query():
-    from phy2 import point_query
-    root.execfile('point_query.py')
+    command = PointQueryCommand()
+    command.execute(root)
 
 def run_spiderweb():
-    from phy2 import spiderweb
-    root.execfile('spiderweb.py')
+    command = SpiderwebCommand()
+    command.execute(root)
 
 
 
 ########   Math Functions   #########
 def run_bayesian_regression():
-    from math_done import bayesian_regression
-    root.execfile('bayesian_regression.py')
+    command = BayesianRegressionCommand()
+    command.execute(root)
+
 
 def run_brownian_motion():
-    from math_done import geometric_brownian_motion
-    root.execfile('geometric_brownian_motion.py')
+    command = BrownianMotionCommand()
+    command.execute(root)
 
 
 def run_derivatives():
-    from math_done import derivative
-    root.execfile('derivative.py')
+    command = DerivativesCommand()
+    command.execute(root)
 
 
 def run_eq_grapher():
-    from math_done import Eq_grapher
-    root.execfile('Eq_grapher.py')
+    command = EqGrapherCommand()
+    command.execute(root)
 
 
 def run_exponential_decay():
-    from math_done import exponential_decay
-    root.execfile('exponential_decay.py')
+    command = ExpDecayCommand()
+    command.execute(root)
 
 
 def run_fermats_spiral():
-    from math_done import Fermat_spiral
-    root.execfile('Fermat_spiral.py')
+    command = FermatsSpiralCommand()
+    command.execute(root)
 
 
 def run_georgias_spiral():
-    from math_done import GeorgiasSpiral
-    root.execfile('GeorgiasSpiral.py')
+    command = GeorgiasSpiralCommand()
+    command.execute(root)
 
 
 def run_histogram():
-    from math_done import histogram
-    root.execfile('histogram.py')
+    command = HistogramComand()
+    command.execute(root)
 
 
 def run_newton_iteration():
-    from math_done import newton_iteration
-    root.execfile('newton_iteration.py')
+    command = NewtonIterationCommand()
+    command.execute(root)
 
 
 def run_riemann_sum():
-    from math_done import RiemannSum
-    root.execfile('RiemannSum.py')
+    command = RiemannSumCommand()
+    command.execute(root)
 
-##########    Math 2 Functions #########
+
+########## Math 2 Functions #########
 
 def run_3D_plot():
-    from math2 import animation_3D_plot
-    root.execfile('animation_3D_plot.py')
+    command = Plot3DCommand()
+    command.execute(root)
+
 
 def run_area_chart():
-    from math2 import area_chart
-    root.execfile('area_chart.py')
+    command = AreaChartCommand()
+    command.execute(root)
+
 
 def run_bar_chart():
-    from math2 import bar_chart
-    root.execfile('bar_chart.py')
+    command = BarChartCommand()
+    command.execute(root)
+
 
 def run_donut_plot():
-    from math2 import donut_plot
-    root.execfile('donut_plot.py')
+    command = DonutPlotCommand()
+    command.execute(root)
+
 
 def run_gapminder_animation():
-    from math2 import gapminder_animation
-    root.execfile('gapminder_animation.py')
+    command = GapminderCommand()
+    command.execute(root)
+
 
 def run_monte_carlo():
-    from math2 import monte_carlo_integration
-    root.execfile('monte_carlo_integration.py')
+    command = MonteCarloCommand()
+    command.execute(root)
+
 
 def run_multiple_lines_chart():
-    from math2 import multiple_lines_chart
-    root.execfile('multiple_lines_chart.py')
+    command = MultipleLinesCommand()
+    command.execute(root)
+
 
 def run_scatter_plot():
-    from math2 import scatter_plot
-    root.execfile('scatter_plot.py')
+    command = ScatterPlotCommand()
+    command.execute(root)
+
 
 def run_taylor_series():
-    from math2 import taylor_series
-    root.execfile('taylor_series.py')
+    command = TaylorCommand()
+    command.execute(root)
+
 
 #######################################
 
