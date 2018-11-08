@@ -10,7 +10,7 @@ def run():
     imgx = 600;
     imgy = 600
 
-    root = Tk()
+    root = Toplevel()
     root.title("Random Quasicrystal Generator")
     root.geometry('{}x{}'.format(imgx, imgy))
     progress_var = DoubleVar()  # here you have ints but when calc. %'s usually floats

@@ -1082,7 +1082,8 @@ def missmenu():
                  font="Calibri 9 bold",
                  command=run_rainbow_rain_circle,
                  width=30).grid()
-                 
+                
+    '''
     b13 = Button(misroot,
                  bg="gray",
                  fg="white",
@@ -1103,7 +1104,7 @@ def missmenu():
                  font="Calibri 9 bold",
                  command=run_siers_triangles,
                  width=30).grid()
-    '''
+
     exitb = Button(misroot,
                    bg="gray",
                    fg="white",
