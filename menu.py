@@ -1,5 +1,4 @@
 from tkinter import *
-from tkinter import messagebox
 
 from PIL import Image, ImageTk
 
@@ -37,61 +36,60 @@ app.grid()
 #############################################################
 
 #   Physics Functions #
+from Commands import *
+
 
 def run_double_pendulum():
-    from phy import DoublePendulum
-    root.execfile('DoublePendulum.py')
+    command = DoublePendulumCommand()
+    command.execute(root)
 
 
 def run_mass_spring_damper():
-    from phy import mass_spring_damper
-    root.execfile('mass_spring_damper.py')
+    command = MasSpringDamperCommand()
+    command.execute(root)
 
 
 def run_multiple_pendulum():
-    from phy import multiple_pendulum
-    root.execfile('multiple_pendulum.py')
+    command = MultiplePendulumCommand()
+    command.execute(root)
 
 
 def run_particle_sim():
-    from phy import particle_simulation
-    root.execfile('particle_simulation.py')
-
+    command = ParticleSimCommand()
+    command.execute(root)
 
 def run_pendulum():
-    from phy import Pendulum
-    root.execfile('Pendulum.py')
+    command = PendulumCommand()
+    command.execute(root)
 
 
 def run_projectile():
-    from phy import projectile_full
-    root.execfile('projectile_full.py')
-
+    command = ProjectileCommand()
+    command.execute(root)
 
 def run_solar():
-    from phy import solar1
-    root.execfile('solar1.py')
+    command = SolarCommand()
+    command.execute(root)
 
 
 def run_verlet_cloth_1():
-    from phy import verlet_cloth_system_mouse
-    root.execfile('verlet_cloth_system_mouse.py')
+    command = ClothMouse1Command()
+    command.execute(root)
 
 
 def run_verlet_cloth_2():
-    from phy import verlet_cloth_system_mouse2
-    root.execfile('verlet_cloth_system_mouse2.py')
+    command = ClothMouse2Command()
+    command.execute(root)
 
 
 def run_verlet_particle():
-    from phy import verlet_particle
-    root.execfile('verlet_particle.py')
+    command = VerletParticleCommand()
+    command.execute(root)
 
 
 def run_verlet_rigid_body():
-    from phy import verlet_rigid_body_mouse
-    root.execfile('verlet_rigid_body_mouse.py')
-
+    command = VerletRigidBodyCommand()
+    command.execute(root)
 
 ########   Physics 2 Functions   #########
 
@@ -99,63 +97,52 @@ def run_arrow():
     from phy2 import arrows
     root.execfile('arrows.py')
 
-
 def run_balls_lines():
     from phy2 import balls_and_lines
     root.execfile('balls_and_lines.py')
-
 
 def run_box2d_verticle():
     from phy2 import box2d_vertical_stack
     root.execfile('box2d_vertical_stack.py')
 
-
 def run_breakout():
     from phy2 import breakout
     root.execfile('breakout.py')
-
 
 def run_copy_pickle():
     from phy2 import copy_and_pickle
     root.execfile('copy_and_pickle.py')
 
-
 def run_flipper():
     from phy2 import flipper
     root.execfile('flipper.py')
-
 
 def run_deformable():
     from phy2 import deformable
     root.execfile('deformable.py')
 
-
 def run_newtons_cradle():
     from phy2 import newtons_cradle
     root.execfile('newtons_cradle.py')
-
 
 def run_playground():
     from phy2 import playground
     root.execfile('playground.py')
 
-
 def run_point_query():
     from phy2 import point_query
     root.execfile('point_query.py')
-
 
 def run_spiderweb():
     from phy2 import spiderweb
     root.execfile('spiderweb.py')
 
 
+
 ########   Math Functions   #########
 def run_bayesian_regression():
     from math_done import bayesian_regression
     root.execfile('bayesian_regression.py')
-    #root.run_path('bayesian_regression.py')
-
 
 def run_brownian_motion():
     from math_done import geometric_brownian_motion
@@ -201,7 +188,6 @@ def run_riemann_sum():
     from math_done import RiemannSum
     root.execfile('RiemannSum.py')
 
-
 ##########    Math 2 Functions #########
 
 def run_3D_plot():
@@ -212,41 +198,33 @@ def run_area_chart():
     from math2 import area_chart
     root.execfile('area_chart.py')
 
-
 def run_bar_chart():
     from math2 import bar_chart
     root.execfile('bar_chart.py')
-
 
 def run_donut_plot():
     from math2 import donut_plot
     root.execfile('donut_plot.py')
 
-
 def run_gapminder_animation():
     from math2 import gapminder_animation
     root.execfile('gapminder_animation.py')
-
 
 def run_monte_carlo():
     from math2 import monte_carlo_integration
     root.execfile('monte_carlo_integration.py')
 
-
 def run_multiple_lines_chart():
     from math2 import multiple_lines_chart
     root.execfile('multiple_lines_chart.py')
-
 
 def run_scatter_plot():
     from math2 import scatter_plot
     root.execfile('scatter_plot.py')
 
-
 def run_taylor_series():
     from math2 import taylor_series
     root.execfile('taylor_series.py')
-
 
 #######################################
 
@@ -257,65 +235,59 @@ def run_bond_antibond():
     from chem import bond_antibond
     root.execfile('bond_antibond.py')
 
-
 #########################################
 
 
 ########   Misc Functions   #########
 
 def run_barnsley_fern():
-    from miscc import BarnsleyFern
-    root.execfile('BarnsleyFern.py')
-
+    command = BarnsleyCommand()
+    command.execute(root)
 
 def run_bubble_sort():
-    from miscc import bubble_sort_UI
-    root.execfile('bubble_sort_UI.py')
+    command = BubbleSortCommand()
+    command.execute(root)
 
 
 def run_dragon_curve():
-    from miscc import DragonCurve
-    root.execfile('DragonCurve.py')
-
+    command = DragonCurveCommand()
+    command.execute(root)
 
 def run_fractal_tree():
-    from miscc import FractalTree
-    root.execfile('FractalTree.py')
-
+    command = FractalTreeCommand()
+    command.execute(root)
 
 def run_hilbert():
-    from miscc import Hilbert
-    root.execfile('Hilbert.py')
+    command = HilbertCommand()
+    command.execute(root)
 
 
 def run_honeycomb():
-    from miscc import honeycomb
-    root.execfile('honeycomb.py')
+    command = HoneycombCommand()
+    command.execute(root)
 
 
 def run_mandelbrot():
-    from miscc import InteractiveMandelbrot
-    root.execfile('InteractiveMandelbrot.py')
-
+    command = InteractiveMandelbrotCommand()
+    command.execute(root)
 
 def run_langtons_loop():
-    from miscc import langtonloop
-    root.execfile('langtonloop.py')
-
+    command = LangtonLoopCommand()
+    command.execute(root)
 
 def run_langtons_ant():
-    from miscc import LangtonsAnt
-    root.execfile('LangtonsAnt.py')
+    command = LangtonAntCommand()
+    command.execute(root)
 
 
 def run_quasi_crystal():
-    from miscc import quasicrystal
-    root.execfile('quasicrystal.py')
+    command = QuasiCrystalCommand()
+    command.execute(root)
 
 
 def run_rainbow_click():
-    from miscc import RainbowClick
-    root.execfile('RainbowClick.py')
+    command = RainbowClickCommand()
+    command.execute(root)
 
 
 def run_rainbow_rain():
@@ -324,18 +296,16 @@ def run_rainbow_rain():
 
 
 def run_rainbow_rain_circle():
-    from miscc import rainbowraincircle
-    root.execfile('rainbowraincircle.py')
-
+    command = RainbowRainCommand()
+    command.execute(root)
 
 def run_random_fractals():
-    from miscc import RandomFractalSpiral
-    root.execfile('RandomFractalSpiral.py')
-
+    command = RandomFractalCommand()
+    command.execute(root)
 
 def run_siers_triangles():
-    from miscc import Sierpinski
-    root.execfile('Sierpinski.py')
+    command = SierPinskiCommand()
+    command.execute(root)
 
 
 #############################################################
@@ -470,8 +440,6 @@ def physicsmenu():
                    font="Calibri 9 bold",
                    width=10,
                    command=lambda: [phyroot.destroy(), recall_window()]).grid()
-
-
 
 
 ###############################################
@@ -699,6 +667,7 @@ def mathsmenu():
                 command=run_histogram,
                 width=30).grid()
 
+
     b10 = Button(mathroot,
                  bg="gray",
                  fg="white",
@@ -742,8 +711,6 @@ def mathsmenu():
                    width=10,
                    height=1,
                    command=lambda: [mathroot.destroy(), recall_window()]).grid()
-
-
 ########################################
 
 def mathsmenu2():
@@ -844,6 +811,7 @@ def mathsmenu2():
                 command=run_taylor_series,
                 width=30).grid()
 
+
     exitb = Button(mathroot2,
                    bg="gray",
                    fg="white",
@@ -866,6 +834,7 @@ def chemistrysmenu():
 
     Label(chemroot, text="Chemistry menu will be \nimplemented in the future.\n Sorry for the inconvenience.",
           font="Eurostile 20 bold", padx=97, pady=20).grid()
+
 
     b1 = Button(chemroot,
                 bg="gray",
@@ -1161,6 +1130,7 @@ button1.grid(padx=1, pady=2)
 button1 = Button(app, text="Physics 2", bd=12, relief="raised", command=physicsmenu2, width=15)
 button1.configure(bg="#00008B", fg="white", font="Calibri 9 bold")
 button1.grid(padx=1, pady=2)
+
 
 button3 = Button(app, text="Mathematics", bd=12, relief="raised", command=mathsmenu, width=15)
 button3.configure(bg="#8B0000", fg="white", font="Calibri 9 bold")
