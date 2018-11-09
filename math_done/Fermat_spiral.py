@@ -6,6 +6,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 from PIL import ImageTk, Image
 
+def close_this_sht():
+    plt.gcf()
+    plt.clf()
+    #plt.close()
+
 
 def run(a,b):
     theta = np.arange(0, 8 * np.pi, 0.1)
@@ -25,8 +30,14 @@ def run(a,b):
 
     plt.savefig("Fermat's Spiral.png")
     imgx = 600; imgy = 600
+
     root = Tk()
     root.geometry('{}x{}'.format(imgx, imgy))
+
+    exitb = Button(root, text="Exit", bd=12, relief="raised", command=lambda: [close_this_sht(), root.destroy()], width=15)
+    exitb.configure(bg="gray", fg="white", font="Calibri 9 bold")
+    exitb.pack(padx=10, pady=30)
+
 
     image = Image.new("RGB", (imgx, imgy))
     pixels = image.load()
@@ -37,7 +48,14 @@ def run(a,b):
     canvas.pack()
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
-    #os.remove(imgName)
+
+
+    for event in root.event.get():
+        if event.type == root.QUIT:
+            plt.gcf()
+            plt.close()
+            #root.destroy()
+
     root.mainloop()
 
 
@@ -45,3 +63,5 @@ def run(a,b):
 a = 1
 b = .5
 run(a,b)
+
+

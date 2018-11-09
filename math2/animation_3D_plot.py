@@ -1,7 +1,6 @@
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
 
 # Get the data (csv file is hosted on the web)
 url = 'https://python-graph-gallery.com/wp-content/uploads/volcano.csv'

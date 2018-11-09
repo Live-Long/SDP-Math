@@ -1,4 +1,3 @@
-import numpy as np
 import matplotlib.pyplot as plt
 
 # create data
@@ -12,8 +11,6 @@ plt.show()
 # Same, but add a stronger line on top (edge)
 plt.fill_between(x, y, color="skyblue", alpha=0.2)
 plt.plot(x, y, color="Slateblue", alpha=0.6)
-
-import seaborn as sns
 
 # Make the same graph
 plt.fill_between(x, y, color="skyblue", alpha=0.3)

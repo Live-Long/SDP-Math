@@ -48,19 +48,20 @@ def drawLine(a, b, myPen):
         else:
             equation = " y = " + str(a)
 
-    ## issue here
-    #     myPen.write(equation, None, None, ("Arial", 16, "normal"))
-
 
 # Main Program Starts Here
 def run():
 
-    myPen, screen = init()
-    myPen.color("white")
-    drawAxis(myPen)
-    myPen.pensize(2)
-    myPen.color("#FF59F7")
-    drawLine(1.5, -40, myPen)
-    screen.tracer(0)
+    try:
+        myPen, screen = init()
+        myPen.color("white")
+        drawAxis(myPen)
+        myPen.pensize(2)
+        myPen.color("#FF59F7")
+        drawLine(1.5, -40, myPen)
+        screen.tracer(0)
+    except Exception:
+        turtle.exitonclick()
+
 
 run()

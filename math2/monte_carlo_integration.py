@@ -15,8 +15,6 @@ def easy_function(x):
 def hard_function(x):
     return((1/np.sqrt(2*np.pi))*np.exp(-(x**2)/2))
 
-
-
 def integrate(x1,x2,func=easy_function,n=100000):
     X=np.linspace(x1,x2,1000)
     y1=0

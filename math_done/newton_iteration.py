@@ -33,6 +33,11 @@ l1 = lambda x: 2*x-8
 l2 = lambda x: 6*x-20
 x = np.linspace(0,5,100)
 
+def close_this_sht():
+    plt.gcf()
+    plt.clf()
+    #plt.close()
+
 def run(f):
     plt.plot(x, f(x), 'black')
     plt.plot(x[30:80], l1(x[30:80]), 'blue', linestyle='--')
@@ -59,13 +64,22 @@ def run(f):
 
     image = Image.new("RGB", (imgx, imgy))
 
+    exitb = Button(root, text="Exit", bd=12, relief="raised", command=lambda: [close_this_sht(), root.destroy()],
+                   width=15)
+    exitb.configure(bg="gray", fg="white", font="Calibri 9 bold")
+    exitb.pack(padx=10, pady=30)
+
     imgName = "Newton Iteration.png"
     root.title("Newton Iteration")
     canvas = Canvas(root, width = imgx, height = imgy)
     canvas.pack()
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
-    #os.remove(imgName)
+
+    for event in root.event.get():
+        if event.type == root.QUIT:
+            root.destroy()
+
     root.mainloop()
 
 

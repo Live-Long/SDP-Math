@@ -4,9 +4,6 @@ import numpy as np
 from sympy.functions import sin, cos, ln
 import matplotlib.pyplot as plt
 
-
-import os
-
 from tkinter import *
 
 from PIL import ImageTk, Image
@@ -53,8 +50,6 @@ def plot(f, x0=0, n=9, by=2, x_lims=[-5, 5], y_lims=[-5, 5], npoints=800, x=sy.S
     plt.title('Taylor series approximation')
     plt.savefig("taylor.png")
 
-
-
 def run():
     x = sy.Symbol('x')
     f = ln(10 + x)
@@ -69,7 +64,12 @@ def run():
     canvas.pack()
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
-    #os.remove(imgName)
+
+    for event in root.event.get():
+        if event.type == root.QUIT:
+            root.destroy()
+
+
     root.mainloop()
 
 run()

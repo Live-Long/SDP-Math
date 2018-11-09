@@ -134,23 +134,23 @@ class BayesianRegressionCommand(Command):
 
     def execute(self, root):
         from math_done import bayesian_regression
-        root.execfile('bayesian_regression.py')
+        #root.execfile('bayesian_regression.py')
 
 
 class BrownianMotionCommand(Command):
     def execute(self, root):
-        from math_done import geometric_brownian_motion
-        root.execfile('geometric_brownian_motion.py')
+        from math_done import brownian_motion
+        root.execfile('brownian_motion.py')
 
 class DerivativesCommand(Command):
     def execute(self, root):
         from math_done import derivative
-        root.execfile('derivative.py')
+        #root.execfile('derivative.py')
 
 class EqGrapherCommand(Command):
     def execute(self, root):
         from math_done import Eq_grapher
-        root.execfile('Eq_grapher.py')
+        #root.execfile('Eq_grapher.py')
 
 class ExpDecayCommand(Command):
     def execute(self, root):

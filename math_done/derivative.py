@@ -5,6 +5,10 @@ from sympy.abc import x
 from tkinter import *
 from PIL import ImageTk,Image
 
+def close_this_sht():
+    plt.gcf()
+    plt.clf()
+    #plt.close()
 
 f = x**3-2*x-6
 
@@ -31,6 +35,11 @@ def run(f):
     root = Tk()
     root.title("Derivatives")
     root.geometry('{}x{}'.format(imgx, imgy))
+
+    exitb = Button(root, text="Exit", bd=12, relief="raised", command=lambda: [close_this_sht(),root.destroy()],
+                   width=15)
+    exitb.configure(bg="gray", fg="white", font="Calibri 9 bold")
+    exitb.pack(padx=10, pady=30)
 
     image = Image.new("RGB", (imgx, imgy))
     pixels = image.load()

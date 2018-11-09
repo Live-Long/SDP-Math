@@ -1,6 +1,5 @@
 import turtle
-import math
-import random
+
 wn = turtle.Screen()
 wn.bgcolor('black')
 Albert = turtle.Turtle()

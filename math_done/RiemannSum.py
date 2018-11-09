@@ -50,6 +50,10 @@ class MyGui:    #(fold)
         self.error_label = Label(tk,text="Error: ")
         self.error_label.grid(row=3,column=2)
 
+        for event in self.event.get():
+            if event.type == self.QUIT:
+                self.destroy()
+
         mainloop()
 
     def updateCanvas(self, other=None):
@@ -107,6 +111,9 @@ class MyGui:    #(fold)
 # (end)
 
 def run():
+
+
     thegui = MyGui()
     thegui.initGui()
+
 run()
