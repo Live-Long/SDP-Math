@@ -3,28 +3,33 @@ import pandas as pd
 import pymc3 as pm
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 
+def run():
+    try:
+        df = pd.read_csv('D:/SDP Math/math_done/thads2013n.txt', sep=',')  # needs Data Set
+        df = df[df['BURDEN'] > 0]
+        df = df[df['AGE1'] > 0]
 
-df=pd.read_csv('D:/SDP Math/math_done/thads2013n.txt',sep=',')  #needs Data Set
-df=df[df['BURDEN']>0]
-df=df[df['AGE1']>0]
+        plt.scatter(df['AGE1'], df['BURDEN'])
+        plt.show()
 
-plt.scatter(df['AGE1'],df['BURDEN'])
-plt.show()
+        with pm.Model() as model:
+            # Define priors
+            sigma = pm.HalfCauchy('sigma', beta=10, testval=1.)
+            intercept = pm.Normal('Intercept', 0, sd=20)
+            x_coeff = pm.Normal('x', 0, sd=20)
 
-with pm.Model() as model:
-    # Define priors
-    sigma = pm.HalfCauchy('sigma', beta=10, testval=1.)
-    intercept = pm.Normal('Intercept', 0, sd=20)
-    x_coeff = pm.Normal('x', 0, sd=20)
+            # Define likelihood
+            likelihood = pm.Normal('y', mu=intercept + x_coeff * df['AGE1'],
+                                   sd=sigma, observed=df['BURDEN'])
 
-    # Define likelihood
-    likelihood = pm.Normal('y', mu=intercept + x_coeff * df['AGE1'],
-                        sd=sigma, observed=df['BURDEN'])
+            # Inference!
+            trace = pm.sample(3000)
+            pm.traceplot(trace)
+            plt.show()
+            print(np.mean([1 if obj < 0 else 0 for obj in trace['x']]))
 
-    # Inference!
-    trace = pm.sample(3000)
-pm.traceplot(trace)
-plt.show()
-print(np.mean([1 if obj<0 else 0 for obj in trace['x']]))
-
+    except Exception:
+        plt.destroy()
+run()

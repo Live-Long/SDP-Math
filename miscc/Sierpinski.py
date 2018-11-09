@@ -54,7 +54,7 @@ def run(vertices, level):
                 level - 1)
         except Exception:
             print("Early Termination")
-            exit()
+            turtle.done()
 
 
 vertices = [[-200, -100], [0, 200], [200, -100]]

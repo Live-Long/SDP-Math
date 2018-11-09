@@ -77,7 +77,7 @@ def run(totalDrops):
             root.after(1)
         except Exception:
             print("Terminating")
-            exit()
+            root.destroy()
 
 
 number_of_drops = 500

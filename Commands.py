@@ -1,9 +1,5 @@
-
 class Command:
     def execute(self,root): pass
-
-
-
 
 ##### PHYSICS COMMANDS ######
 
@@ -135,9 +131,11 @@ class SpiderwebCommand(Command):
 
 ##### MATH COMMANDS #####
 class BayesianRegressionCommand(Command):
+
     def execute(self, root):
         from math_done import bayesian_regression
         root.execfile('bayesian_regression.py')
+
 
 class BrownianMotionCommand(Command):
     def execute(self, root):

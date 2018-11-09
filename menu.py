@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 from PIL import Image, ImageTk
 
@@ -121,10 +122,6 @@ def run_deformable():
     command = DeformableCommand()
     command.execute(root)
 
-def run_newtons_cradle():
-    from phy2 import newtons_cradle
-    root.execfile('newtons_cradle.py')
-
 def run_playground():
     command = PlaygroundCommand()
     command.execute(root)
@@ -240,15 +237,6 @@ def run_taylor_series():
 #######################################
 
 
-########   Chemistry Functions ##########
-
-def run_bond_antibond():
-    from chem import bond_antibond
-    root.execfile('bond_antibond.py')
-
-#########################################
-
-
 ########   Misc Functions   #########
 
 def run_barnsley_fern():
@@ -259,19 +247,9 @@ def run_bubble_sort():
     command = BubbleSortCommand()
     command.execute(root)
 
-
-def run_dragon_curve():
-    command = DragonCurveCommand()
-    command.execute(root)
-
 def run_fractal_tree():
     command = FractalTreeCommand()
     command.execute(root)
-
-def run_hilbert():
-    command = HilbertCommand()
-    command.execute(root)
-
 
 def run_honeycomb():
     command = HoneycombCommand()
@@ -280,10 +258,6 @@ def run_honeycomb():
 
 def run_mandelbrot():
     command = InteractiveMandelbrotCommand()
-    command.execute(root)
-
-def run_langtons_loop():
-    command = LangtonLoopCommand()
     command.execute(root)
 
 def run_langtons_ant():
@@ -322,6 +296,11 @@ def run_siers_triangles():
 #############################################################
 def close_window():
     root.destroy()
+
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        root.destroy()
+        sys.exit()
 
 
 def physicsmenu():
@@ -452,6 +431,8 @@ def physicsmenu():
                    width=10,
                    command=lambda: [phyroot.destroy(), recall_window()]).grid()
 
+    phyroot.protocol("WM_DELETE_WINDOW", on_closing)
+
 
 ###############################################
 
@@ -532,17 +513,6 @@ def physicsmenu2():
                 relief="raised",
                 font="Calibri 9 bold",
                 width=30).grid()
-    '''
-    b8 = Button(phyroot2,
-                bg="gray",
-                fg="white",
-                text="Newton's Cradle",
-                bd=12,
-                command=run_newtons_cradle,
-                relief="raised",
-                font="Calibri 9 bold",
-                width=30).grid()
-    '''
 
     b9 = Button(phyroot2,
                 bg="gray",
@@ -584,6 +554,8 @@ def physicsmenu2():
                    width=10,
                    command=lambda: [phyroot2.destroy(), recall_window()]).grid()
 
+    phyroot2.protocol("WM_DELETE_WINDOW", on_closing)
+
 
 ####################################
 
@@ -605,7 +577,7 @@ def mathsmenu():
                 bd=12,
                 relief="raised",
                 font="Calibri 9 bold",
-                command=run_bayesian_regression,
+                command=lambda: [run_bayesian_regression()],
                 width=30).grid()
 
     b2 = Button(mathroot,
@@ -699,19 +671,6 @@ def mathsmenu():
                  command=run_riemann_sum,
                  width=30).grid()
 
-    '''
-
-    b12 = Button(mathroot,
-                bg="gray",
-                fg="white",
-                text="Taylor Series",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                command=run_taylor_series,
-                width=30).grid()
-    '''
-
     exitb = Button(mathroot,
                    bg="gray",
                    fg="white",
@@ -722,6 +681,9 @@ def mathsmenu():
                    width=10,
                    height=1,
                    command=lambda: [mathroot.destroy(), recall_window()]).grid()
+
+    mathroot.protocol("WM_DELETE_WINDOW", on_closing)
+
 ########################################
 
 def mathsmenu2():
@@ -834,123 +796,7 @@ def mathsmenu2():
                    height=1,
                    command=lambda: [mathroot2.destroy(), recall_window()]).grid()
 
-
-####################################
-
-def chemistrysmenu():
-    root.withdraw()
-    chemroot = Tk()
-    chemroot.title("Academedia - Chemistry Menu")
-    chemroot.geometry("600x700")
-
-    Label(chemroot, text="Chemistry menu will be \nimplemented in the future.\n Sorry for the inconvenience.",
-          font="Eurostile 20 bold", padx=97, pady=20).grid()
-
-
-    b1 = Button(chemroot,
-                bg="gray",
-                fg="white",
-                text="Task 1",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                width=30).grid()
-
-    b2 = Button(chemroot,
-                bg="gray",
-                fg="white",
-                text="Task 2",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                width=30).grid()
-
-    b3 = Button(chemroot,
-                bg="gray",
-                fg="white",
-                text="Task 3",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                width=30).grid()
-    b4 = Button(chemroot,
-                bg="gray",
-                fg="white",
-                text="Task 3",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                width=30).grid()
-    b5 = Button(chemroot,
-                bg="gray",
-                fg="white",
-                text="Task 3",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                width=30).grid()
-    b6 = Button(chemroot,
-                bg="gray",
-                fg="white",
-                text="Task 3",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                width=30).grid()
-    b7 = Button(chemroot,
-                bg="gray",
-                fg="white",
-                text="Task 3",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                width=30).grid()
-
-    exitb = Button(chemroot,
-                   bg="gray",
-                   fg="white",
-                   text="Back",
-                   bd=12,
-                   relief="raised",
-                   font="Calibri 9 bold",
-                   width=10,
-                   command=lambda: [chemroot.destroy(), recall_window()]).grid()
-    '''
-    b11 = Button(chemroot,
-                 bg="gray",
-                 fg="white",
-                 text="Task 3",
-                 bd=12,
-                 relief="raised",
-                 font="Calibri 9 bold",
-                 width=30).grid()
-    b12 = Button(chemroot,
-                 bg="gray",
-                 fg="white",
-                 text="Task 3",
-                 bd=12,
-                 relief="raised",
-                 font="Calibri 9 bold",
-                 width=30).grid()
-
-    #####  Scroll bar  ##########
-
-    frame = Frame(chemroot)
-    scroll = Scrollbar(frame)
-    text = Text(frame, yscrollcommand=scroll.set)
-    button = Button(chemroot)
-    # Config
-    text.insert(END, '\n'.join("ass"))
-    scroll.config(command=text.yview)
-    button.config(text=('Close'), command=chemroot.destroy)
-    button.focus_set()
-    # Packing
-    text.grid(side='left', fill='both', expand=1)
-    scroll.grid(side='right', fill='y')
-    frame.grid(fill='both', expand=1)
-    button.grid(ipadx=30)
-    '''
-    ###############################
+    mathroot2.protocol("WM_DELETE_WINDOW", on_closing)
 
 
 ####################################
@@ -983,16 +829,6 @@ def missmenu():
                 command=run_bubble_sort,
                 width=30).grid()
 
-    b3 = Button(misroot,
-                bg="gray",
-                fg="white",
-                text="Dragon Curve",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                command=run_dragon_curve,
-                width=30).grid()
-
     b4 = Button(misroot,
                 bg="gray",
                 fg="white",
@@ -1002,17 +838,7 @@ def missmenu():
                 font="Calibri 9 bold",
                 command=run_fractal_tree,
                 width=30).grid()
-    '''
-    b5 = Button(misroot,
-                bg="gray",
-                fg="white",
-                text="Hilbert",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                command=run_hilbert,
-                width=30).grid()
-    '''
+
     b6 = Button(misroot,
                 bg="gray",
                 fg="white",
@@ -1031,16 +857,6 @@ def missmenu():
                 relief="raised",
                 font="Calibri 9 bold",
                 command=run_mandelbrot,
-                width=30).grid()
-
-    b8 = Button(misroot,
-                bg="gray",
-                fg="white",
-                text="Langton's Loop",
-                bd=12,
-                relief="raised",
-                font="Calibri 9 bold",
-                command=run_langtons_loop,
                 width=30).grid()
 
     b9 = Button(misroot,
@@ -1083,18 +899,6 @@ def missmenu():
                  command=run_rainbow_rain,
                  width=30).grid()
 
-    '''
-    b12 = Button(misroot,
-                 bg="gray",
-                 fg="white",
-                 text="Rainbow Rain Circles",
-                 bd=12,
-                 relief="raised",
-                 font="Calibri 9 bold",
-                 command=run_rainbow_rain_circle,
-                 width=30).grid()
-                
-    '''
     b13 = Button(misroot,
                  bg="gray",
                  fg="white",
@@ -1126,9 +930,15 @@ def missmenu():
                    width=10,
                    command=lambda: [misroot.destroy(), recall_window()]).grid()
 
+    misroot.protocol("WM_DELETE_WINDOW", on_closing)
+
 
 def recall_window():
     root.deiconify()
+
+def destroyer():
+    root.quit()
+    root.destroy()
 
 
 #############################################################
@@ -1151,12 +961,6 @@ button3.grid(padx=1, pady=2)
 button4 = Button(app, text="Mathematics 2", bd=12, relief="raised", command=mathsmenu2, width=15)
 button4.configure(bg="#8B0000", fg="white", font="Calibri 9 bold")
 button4.grid(padx=1, pady=2)
-
-'''
-button5 = Button(app, text="Chemistry", bd=12, relief="raised", command=chemistrysmenu, width=15)
-button5.configure(bg="#006400", fg="white", font="Calibri 9 bold")
-button5.grid(padx=1, pady=2)
-'''
 
 button6 = Button(app, text="Miscellaneous", bd=12, relief="raised", command=missmenu, width=15)
 button6.configure(bg="#BDB76B", font="Calibri 9 bold")

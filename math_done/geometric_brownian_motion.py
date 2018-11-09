@@ -38,22 +38,30 @@ def gmb():
 
 #no parameter
 def run():
+
     CC, DF = gmb()
     CallPayoffAverage = np.average(CC)
     CallPayoff = DF * CallPayoffAverage
     print(CallPayoff)
     imgx = 600; imgy = 600
     root = Tk()
+
     root.geometry('{}x{}'.format(imgx, imgy))
+
+    exitb = Button(root, text="Exit", bd=12, relief="raised", command=lambda: [root.destroy()], width=15)
+    exitb.configure(bg="gray", fg="white", font="Calibri 9 bold")
+    exitb.grid(padx=10, pady=30)
 
     image = Image.new("RGB", (imgx, imgy))
 
     imgName = "Brownian Motion.png"
     root.title("Brownian Motion Simulation")
     canvas = Canvas(root, width = imgx, height = imgy)
-    canvas.pack()
+    canvas.grid()
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
     #os.remove(imgName)
+
     root.mainloop()
+
 run()
