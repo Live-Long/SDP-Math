@@ -2,14 +2,15 @@ import pygame, sys, math
 
 pygame.init()
 
-FPS = 60 # frames per second setting
+FPS = 60  # frames per second setting
 fpsClock = pygame.time.Clock()
 
 # set up the window
 screen = pygame.display.set_mode((800, 600), 0, 32)
 pygame.display.set_caption('Projectile Motion')
 
-def run(g,k,angle):
+
+def run(g, k, angle):
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
 
@@ -42,7 +43,7 @@ def run(g,k,angle):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                #sys.exit()
+                # sys.exit()
 
         pygame.display.update()
         fpsClock.tick(FPS)

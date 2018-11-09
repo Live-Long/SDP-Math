@@ -40,6 +40,6 @@ class EqHist:
 
     def get_next(self):
         """ Recover next equation from the historial """
-        if self.eq_hist_index != len(self.eq_hist)-1:
+        if self.eq_hist_index != len(self.eq_hist) - 1:
             self.eq_hist_index += 1
         return self.eq_hist[self.eq_hist_index]

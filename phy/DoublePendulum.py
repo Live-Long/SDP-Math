@@ -1,4 +1,3 @@
-
 import sys, os
 from math import sin, cos, pi, atan2, sqrt
 import pygame
@@ -191,6 +190,7 @@ def main():
     a loop until a stop event (escape or window closing) is recognized.
     """
 
+
 def run():
     # Initialize Everything
     pygame.init()
@@ -222,7 +222,7 @@ def run():
         # Handle Input Events
         for event in pygame.event.get():
             if event.type == QUIT:
-                #pygame.display.quit()
+                # pygame.display.quit()
                 pygame.quit()
 
             elif event.type == KEYDOWN and event.key == K_ESCAPE:

@@ -18,6 +18,7 @@ COLLTYPE_BALL = 2
 
 assigned_color = "blue"
 
+
 def flipy(y):
     """Small hack to convert chipmunk physics to pygame coordinates"""
     return -y + 600
@@ -38,12 +39,13 @@ def draw_collision(arbiter, data):
         p = tuple(map(int, c.point_a))
         pygame.draw.circle(data["surface"], THECOLORS["red"], p, r, 0)
 
+
 isElastic = False
 
 
 class ball_class(object):
-
     color = "blue"
+
     def __init__(self, p):
         self.body = pymunk.Body(10, 100)
         self.body.position = p
@@ -52,14 +54,12 @@ class ball_class(object):
         self.shape.friction = 0.5
         self.shape.collision_type = COLLTYPE_BALL
 
-
     def reduce_elasticity(self):
         if self.shape.elasticity >= 0.01:
             self.shape.elasticity = self.shape.elasticity - 0.000001
 
 
 def main():
-
     def toggle_ball_color():
         if ball_class.color == "blue":
             ball_class.color = "green"
@@ -96,15 +96,14 @@ def main():
     static_lines = []
     run_physics = True
 
-
     while running:
         for event in pygame.event.get():
             if event.type == QUIT:
-                #running = False
+                # running = False
                 pygame.quit()
             elif event.type == KEYDOWN and event.key == K_ESCAPE:
                 pygame.quit()
-                #running = False
+                # running = False
             elif event.type == KEYDOWN and event.key == K_p:
                 pygame.image.save(screen, "balls_and_lines.png")
             elif event.type == KEYDOWN and event.key == K_e:
@@ -219,4 +218,3 @@ def run():
 
 
 run()
-

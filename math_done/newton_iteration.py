@@ -1,9 +1,8 @@
-#https://ryancheunggit.gitbooks.io/calculus-with-python/content/05Limits.html
+# https://ryancheunggit.gitbooks.io/calculus-with-python/content/05Limits.html
 import PIL
 import numpy as np
 import matplotlib.pyplot as plt
 import sympy
-
 
 import os
 
@@ -16,22 +15,22 @@ def mysqrt(c, x=1, maxiter=10, prt_step=False):
     for i in range(maxiter):
         x = 0.5 * (x + c / x)
         if prt_step == True:
-
             print("After {0} iteration, the root value is updated to {1}".format(i + 1, x))
     return x
 
 
-#mysqrt(2, maxiter=4, prt_step=True)
+# mysqrt(2, maxiter=4, prt_step=True)
 # After 1 iteration, the root value is updated to 1.5
 # After 2 iteration, the root value is updated to 1.41666666667
 # After 3 iteration, the root value is updated to 1.41421568627
 # After 4 iteration, the root value is updated to 1.41421356237
 # result : 1.4142135623746899
 
-f = lambda x: x**2-2*x-4
-l1 = lambda x: 2*x-8
-l2 = lambda x: 6*x-20
-x = np.linspace(0,5,100)
+f = lambda x: x ** 2 - 2 * x - 4
+l1 = lambda x: 2 * x - 8
+l2 = lambda x: 6 * x - 20
+x = np.linspace(0, 5, 100)
+
 
 def run(f):
     plt.plot(x, f(x), 'black')
@@ -53,7 +52,8 @@ def run(f):
     plt.plot(10.0 / 3, 0, marker='o', color='r')
     plt.savefig("Newton Iteration.png")
 
-    imgx = 600; imgy = 600
+    imgx = 600;
+    imgy = 600
     root = Tk()
     root.geometry('{}x{}'.format(imgx, imgy))
 
@@ -61,14 +61,12 @@ def run(f):
 
     imgName = "Newton Iteration.png"
     root.title("Newton Iteration")
-    canvas = Canvas(root, width = imgx, height = imgy)
+    canvas = Canvas(root, width=imgx, height=imgy)
     canvas.pack()
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
-    #os.remove(imgName)
+    # os.remove(imgName)
     root.mainloop()
-
-
 
 
 def NewTon(f, s=1, maxiter=100, prt_step=False):
@@ -79,5 +77,6 @@ def NewTon(f, s=1, maxiter=100, prt_step=False):
             print("After {0} iteration, the solution is updated to {1}".format(i + 1, s))
     return s
 
-f = lambda x: x**2-2*x-4
+
+f = lambda x: x ** 2 - 2 * x - 4
 run(f)

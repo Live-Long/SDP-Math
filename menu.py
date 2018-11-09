@@ -32,7 +32,6 @@ logolabel.grid(padx=70, pady=90)
 app = Frame(root)
 app.grid()
 
-
 # Button Events
 #############################################################
 
@@ -59,6 +58,7 @@ def run_particle_sim():
     command = ParticleSimCommand()
     command.execute(root)
 
+
 def run_pendulum():
     command = PendulumCommand()
     command.execute(root)
@@ -67,6 +67,7 @@ def run_pendulum():
 def run_projectile():
     command = ProjectileCommand()
     command.execute(root)
+
 
 def run_solar():
     command = SolarCommand()
@@ -92,48 +93,57 @@ def run_verlet_rigid_body():
     command = VerletRigidBodyCommand()
     command.execute(root)
 
+
 ########   Physics 2 Functions   #########
 
 def run_arrow():
     command = ArrowsCommand()
     command.execute(root)
 
+
 def run_balls_lines():
     command = BallsandLinesCommand()
     command.execute(root)
+
 
 def run_box2d_verticle():
     command = Box2DCommand()
     command.execute(root)
 
+
 def run_breakout():
     command = BreakoutCommand()
     command.execute(root)
+
 
 def run_copy_pickle():
     command = CopyPickleCommand()
     command.execute(root)
 
+
 def run_flipper():
     command = FlipperCommand()
     command.execute(root)
+
 
 def run_deformable():
     command = DeformableCommand()
     command.execute(root)
 
+
 def run_playground():
     command = PlaygroundCommand()
     command.execute(root)
+
 
 def run_point_query():
     command = PointQueryCommand()
     command.execute(root)
 
+
 def run_spiderweb():
     command = SpiderwebCommand()
     command.execute(root)
-
 
 
 ########   Math Functions   #########
@@ -243,13 +253,16 @@ def run_barnsley_fern():
     command = BarnsleyCommand()
     command.execute(root)
 
+
 def run_bubble_sort():
     command = BubbleSortCommand()
     command.execute(root)
 
+
 def run_fractal_tree():
     command = FractalTreeCommand()
     command.execute(root)
+
 
 def run_honeycomb():
     command = HoneycombCommand()
@@ -259,6 +272,7 @@ def run_honeycomb():
 def run_mandelbrot():
     command = InteractiveMandelbrotCommand()
     command.execute(root)
+
 
 def run_langtons_ant():
     command = LangtonAntCommand()
@@ -284,9 +298,11 @@ def run_rainbow_rain_circle():
     command = RainbowRainCommand()
     command.execute(root)
 
+
 def run_random_fractals():
     command = RandomFractalCommand()
     command.execute(root)
+
 
 def run_siers_triangles():
     command = SierPinskiCommand()
@@ -296,6 +312,7 @@ def run_siers_triangles():
 #############################################################
 def close_window():
     root.destroy()
+
 
 def on_closing():
     if messagebox.askokcancel("Quit", "Do you want to quit?"):
@@ -650,7 +667,6 @@ def mathsmenu():
                 command=run_histogram,
                 width=30).grid()
 
-
     b10 = Button(mathroot,
                  bg="gray",
                  fg="white",
@@ -683,6 +699,7 @@ def mathsmenu():
                    command=lambda: [mathroot.destroy(), recall_window()]).grid()
 
     mathroot.protocol("WM_DELETE_WINDOW", on_closing)
+
 
 ########################################
 
@@ -783,7 +800,6 @@ def mathsmenu2():
                 font="Calibri 9 bold",
                 command=run_taylor_series,
                 width=30).grid()
-
 
     exitb = Button(mathroot2,
                    bg="gray",
@@ -907,8 +923,7 @@ def missmenu():
                  relief="raised",
                  font="Calibri 9 bold",
                  command=run_random_fractals,
-                 width=30).grid()    
-    
+                 width=30).grid()
 
     b14 = Button(misroot,
                  bg="gray",
@@ -936,6 +951,7 @@ def missmenu():
 def recall_window():
     root.deiconify()
 
+
 def destroyer():
     root.quit()
     root.destroy()
@@ -952,7 +968,6 @@ button1.grid(padx=1, pady=2)
 button1 = Button(app, text="Physics 2", bd=12, relief="raised", command=physicsmenu2, width=15)
 button1.configure(bg="#00008B", fg="white", font="Calibri 9 bold")
 button1.grid(padx=1, pady=2)
-
 
 button3 = Button(app, text="Mathematics", bd=12, relief="raised", command=mathsmenu, width=15)
 button3.configure(bg="#8B0000", fg="white", font="Calibri 9 bold")

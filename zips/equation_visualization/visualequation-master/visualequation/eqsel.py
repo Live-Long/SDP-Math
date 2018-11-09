@@ -19,6 +19,7 @@ from .symbols import utils
 from . import game
 from .errors import ShowError
 
+
 class Selection:
     def __init__(self, init_eq, init_index, temp_dir, setPixmap):
         self.eq = init_eq
@@ -28,7 +29,7 @@ class Selection:
         self.temp_dir = temp_dir
         self.setPixmap = setPixmap
 
-    def display(self, eq=None,  right=True):
+    def display(self, eq=None, right=True):
         # If equation is provided, substitute the current one
         if eq is not None:
             self.eq = eq
@@ -62,11 +63,11 @@ class Selection:
                 self.index += 1
                 cond = eqtools.is_intermediate_JUXT(self.eq, self.index)
         # Avoid first argument of index operators: \sideset is picky
-        if self.index != 0\
-           and hasattr(self.eq[self.index - 1], 'type_') \
-           and self.eq[self.index - 1].type_ in ('index', 'opindex'):
+        if self.index != 0 \
+                and hasattr(self.eq[self.index - 1], 'type_') \
+                and self.eq[self.index - 1].type_ in ('index', 'opindex'):
             self.index += 1
-            
+
         self.display(right=True)
 
     def display_prev(self):
@@ -86,7 +87,7 @@ class Selection:
                 cond = eqtools.is_intermediate_JUXT(self.eq, self.index)
         # Avoid first argument of index operators: \sideset is picky
         if self.index != 0 \
-           and hasattr(self.eq[self.index - 1], 'type_') \
-           and self.eq[self.index - 1].type_ in ('index', 'opindex'):
+                and hasattr(self.eq[self.index - 1], 'type_') \
+                and self.eq[self.index - 1].type_ in ('index', 'opindex'):
             self.index -= 1
         self.display(right=False)

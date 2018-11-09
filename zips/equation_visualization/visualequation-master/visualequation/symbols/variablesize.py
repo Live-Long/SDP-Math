@@ -13,6 +13,7 @@
 
 from .utils import *
 
+
 def variablesize(parent, code):
     class Dialog(QDialog):
         def __init__(self, parent=None):
@@ -45,7 +46,7 @@ def variablesize(parent, code):
                         True)
             else:
                 return ((None, None), False)
-            
+
     (sup, inf), ok = Dialog.get(parent)
     if ok:
         if sup and inf:
@@ -64,8 +65,10 @@ def variablesize(parent, code):
     else:
         return None
 
+
 def f(code):
     return lambda parent: variablesize(parent, code)
+
 
 def integrals(parent, code):
     class Dialog(QDialog):
@@ -97,7 +100,7 @@ def integrals(parent, code):
                         True)
             else:
                 return ((None, None), False)
-            
+
     (sup, inf), ok = Dialog.get(parent)
     if ok:
         if sup and inf:
@@ -114,6 +117,7 @@ def integrals(parent, code):
         return Op(n_operands, latex_code, "int_with_args")
     else:
         return None
+
 
 def fint(code):
     return lambda parent: integrals(parent, code)

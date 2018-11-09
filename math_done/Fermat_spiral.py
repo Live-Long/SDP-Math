@@ -1,4 +1,4 @@
-#https://matplotlib.org/gallery/misc/fill_spiral.html
+# https://matplotlib.org/gallery/misc/fill_spiral.html
 import os
 from tkinter import *
 
@@ -7,7 +7,7 @@ import numpy as np
 from PIL import ImageTk, Image
 
 
-def run(a,b):
+def run(a, b):
     theta = np.arange(0, 8 * np.pi, 0.1)
     for dt in np.arange(0, 2 * np.pi, np.pi / 2.0):
         x = a * np.cos(theta + dt) * np.exp(b * theta)
@@ -24,7 +24,8 @@ def run(a,b):
         p1 = plt.fill(xf, yf)
 
     plt.savefig("Fermat's Spiral.png")
-    imgx = 600; imgy = 600
+    imgx = 600;
+    imgy = 600
     root = Tk()
     root.geometry('{}x{}'.format(imgx, imgy))
 
@@ -33,15 +34,15 @@ def run(a,b):
 
     imgName = "Fermat's Spiral.png"
     root.title("Fermat Spiral")
-    canvas = Canvas(root, width = imgx, height = imgy)
+    canvas = Canvas(root, width=imgx, height=imgy)
     canvas.pack()
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
-    #os.remove(imgName)
+    # os.remove(imgName)
     root.mainloop()
 
 
-#parameter 2 numbers
+# parameter 2 numbers
 a = 1
 b = .5
-run(a,b)
+run(a, b)

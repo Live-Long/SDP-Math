@@ -10,9 +10,7 @@ import pymunk
 
 setup(
     windows=['breakout.py']
-    , data_files = [('', [pymunk.chipmunk_path])]
-    , zipfile = None
-    , options = {"py2exe":{"bundle_files":1}}
-    )
-    
-
+    , data_files=[('', [pymunk.chipmunk_path])]
+    , zipfile=None
+    , options={"py2exe": {"bundle_files": 1}}
+)

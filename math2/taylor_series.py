@@ -1,9 +1,8 @@
-#https://gist.github.com/mick001/7c4741961a72d69f880d0c602c833fcf
+# https://gist.github.com/mick001/7c4741961a72d69f880d0c602c833fcf
 import sympy as sy
 import numpy as np
 from sympy.functions import sin, cos, ln
 import matplotlib.pyplot as plt
-
 
 import os
 
@@ -54,22 +53,23 @@ def plot(f, x0=0, n=9, by=2, x_lims=[-5, 5], y_lims=[-5, 5], npoints=800, x=sy.S
     plt.savefig("taylor.png")
 
 
-
 def run():
     x = sy.Symbol('x')
     f = ln(10 + x)
     plot(f)
 
-    imgx = 600; imgy = 600
+    imgx = 600;
+    imgy = 600
     root = Tk()
     root.title("Taylor series approximation")
     root.geometry('{}x{}'.format(imgx, imgy))
     imgName = "taylor.png"
-    canvas = Canvas(root, width = imgx, height = imgy)
+    canvas = Canvas(root, width=imgx, height=imgy)
     canvas.pack()
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
-    #os.remove(imgName)
+    # os.remove(imgName)
     root.mainloop()
+
 
 run()

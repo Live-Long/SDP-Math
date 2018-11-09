@@ -23,6 +23,7 @@ MATRIXTYPES = [
     LatexSymb('matrix', 'matrix'),
 ]
 
+
 def matrix_type(parent):
     class Dialog(QDialog):
         def __init__(self, parent=None):
@@ -49,7 +50,7 @@ def matrix_type(parent):
             self.repr_type.setAlignment(Qt.AlignCenter)
             hbox_type.addWidget(button_type)
             hbox_type.addWidget(self.repr_type)
-            
+
             self.buttons = QDialogButtonBox(
                 QDialogButtonBox.Ok | QDialogButtonBox.Cancel,
                 Qt.Horizontal, self)
@@ -99,12 +100,13 @@ def matrix_type(parent):
 
     (n_rows, n_cols, mtype), ok = Dialog.get_matrix_def(parent)
     if ok:
-        row_code = r'{}' + r'&{}'*(n_cols-1) + r'\\'
-        latex_code = r'\begin{{' + mtype + r'}}' + row_code*n_rows \
+        row_code = r'{}' + r'&{}' * (n_cols - 1) + r'\\'
+        latex_code = r'\begin{{' + mtype + r'}}' + row_code * n_rows \
                      + r'\end{{' + mtype + r'}}'
-        return Op(n_rows*n_cols, latex_code)
+        return Op(n_rows * n_cols, latex_code)
     else:
         return None
+
 
 def cases(parent):
     class Dialog(QDialog):
@@ -146,14 +148,15 @@ def cases(parent):
                 return (int(dialog.ledit.text()), True)
             else:
                 return (None, False)
-            
+
     n_cases, ok = Dialog.get_n_cases(parent)
     if ok:
         case_code = r'{}&{}\\'
-        latex_code = r'\begin{{cases}}' + case_code*n_cases + r'\end{{cases}}'
-        return Op(n_cases*2, latex_code)
+        latex_code = r'\begin{{cases}}' + case_code * n_cases + r'\end{{cases}}'
+        return Op(n_cases * 2, latex_code)
     else:
         return None
+
 
 def equation_system(parent):
     class Dialog(QDialog):
@@ -195,15 +198,16 @@ def equation_system(parent):
                 return (int(dialog.ledit.text()), True)
             else:
                 return (None, False)
-            
+
     n_equations, ok = Dialog.get_n_equations(parent)
     if ok:
         case_code = r'{}\\'
-        latex_code = r'\begin{{cases}}' + case_code*n_equations \
+        latex_code = r'\begin{{cases}}' + case_code * n_equations \
                      + r'\end{{cases}}'
         return Op(n_equations, latex_code)
     else:
         return None
+
 
 def array(parent):
     class Dialog(QDialog):
@@ -219,7 +223,7 @@ def array(parent):
             self.validator = QRegExpValidator(regexp)
             self.ledit_rows.setValidator(self.validator)
             self.ledit_cols.setValidator(self.validator)
-            label_align = QLabel('Alignment of columns (eg. lc|r):\n'+
+            label_align = QLabel('Alignment of columns (eg. lc|r):\n' +
                                  '(l: left, c: center, r: right, |: v. line)')
             self.ledit_align = QLineEdit()
             # Left delimiter
@@ -324,16 +328,17 @@ def array(parent):
 
     (n_rows, n_cols, delim_l, delim_r, align), ok = Dialog.get_array(parent)
     if ok:
-        row_code = r'{}' + r'&{}'*(n_cols-1) + r'\\'
+        row_code = r'{}' + r'&{}' * (n_cols - 1) + r'\\'
         latex_code = r'\left' + delim_l \
                      + r'\begin{{array}}' \
                      + '{{' + align + '}}' \
-                     + row_code*n_rows \
+                     + row_code * n_rows \
                      + r'\end{{array}}' \
                      + r'\right' + delim_r
-        return Op(n_rows*n_cols, latex_code)
+        return Op(n_rows * n_cols, latex_code)
     else:
         return None
+
 
 MANYLINES = [
     LatexSymb('matrix_type', matrix_type),

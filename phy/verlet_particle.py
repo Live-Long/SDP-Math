@@ -1,9 +1,8 @@
-
 import pygame, sys, math
 
 pygame.init()
 
-FPS = 60 # frames per second setting
+FPS = 60  # frames per second setting
 fpsClock = pygame.time.Clock()
 
 # set up the window
@@ -15,8 +14,9 @@ pygame.display.set_caption('Verlet Particle System')
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
+
 class Particle:
-    def __init__(self, x, y, m = 1.0):
+    def __init__(self, x, y, m=1.0):
         self.m = m
         self.x = x
         self.y = y
@@ -26,7 +26,7 @@ class Particle:
         self.newy = y
         self.ax = 0
         self.ay = 9.8
-        
+
     def update(self, delta_t):
         # Collision Process
         if self.x < 0 or self.x > WIDTH:
@@ -35,8 +35,8 @@ class Particle:
             self.y, self.oldy = self.oldy, self.y
 
         # Verlet Integrator
-        self.newx = 2.0 * self.x - self.oldx + self.ax * delta_t * delta_t 
-        self.newy = 2.0 * self.y - self.oldy + self.ay * delta_t * delta_t 
+        self.newx = 2.0 * self.x - self.oldx + self.ax * delta_t * delta_t
+        self.newy = 2.0 * self.y - self.oldy + self.ay * delta_t * delta_t
         self.oldx = self.x
         self.oldy = self.y
         self.x = self.newx
@@ -44,7 +44,8 @@ class Particle:
 
     def draw(self, surf, size):
         pygame.draw.circle(surf, WHITE, (int(self.x), int(self.y)), size)
-        
+
+
 delta_t = 0.1
 
 # create particles
@@ -68,9 +69,10 @@ def run():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                #sys.exit()
+                # sys.exit()
 
         pygame.display.update()
         fpsClock.tick(FPS)
+
 
 run()

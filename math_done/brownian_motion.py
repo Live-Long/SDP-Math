@@ -6,6 +6,7 @@ from tkinter import *
 
 from PIL import ImageTk, Image
 
+
 def gmb():
     S0 = 100  # initial stock price
     K = 100  # strike price
@@ -36,14 +37,15 @@ def gmb():
         C[y] = np.maximum(S[y, N - 1] - K, 0)
     return C, discount_factor
 
-#no parameter
-def run():
 
+# no parameter
+def run():
     CC, DF = gmb()
     CallPayoffAverage = np.average(CC)
     CallPayoff = DF * CallPayoffAverage
     print(CallPayoff)
-    imgx = 600; imgy = 600
+    imgx = 600;
+    imgy = 600
     root = Tk()
 
     root.geometry('{}x{}'.format(imgx, imgy))
@@ -56,12 +58,13 @@ def run():
 
     imgName = "Brownian Motion.png"
     root.title("Brownian Motion Simulation")
-    canvas = Canvas(root, width = imgx, height = imgy)
+    canvas = Canvas(root, width=imgx, height=imgy)
     canvas.grid()
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
-    #os.remove(imgName)
+    # os.remove(imgName)
 
     root.mainloop()
+
 
 run()

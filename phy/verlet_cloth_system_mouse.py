@@ -1,9 +1,8 @@
-
 import pygame, sys, math
 
 pygame.init()
 
-FPS = 60 # frames per second setting
+FPS = 60  # frames per second setting
 fpsClock = pygame.time.Clock()
 
 # set up the window
@@ -27,7 +26,7 @@ particles = []
 
 
 class Particle:
-    def __init__(self, x, y, m = 1.0):
+    def __init__(self, x, y, m=1.0):
         self.m = m
         self.x = x
         self.y = y
@@ -37,26 +36,26 @@ class Particle:
         self.newy = y
         self.ax = 0
         self.ay = 9.8
-        
+
         self.fixed = False
         self.selected = False
-        
+
     def update(self, delta_t):
         if self.fixed == False:
             # Verlet Integration
-            self.newx = 2.0 * self.x - self.oldx + self.ax * delta_t * delta_t 
-            self.newy = 2.0 * self.y - self.oldy + self.ay * delta_t * delta_t 
+            self.newx = 2.0 * self.x - self.oldx + self.ax * delta_t * delta_t
+            self.newy = 2.0 * self.y - self.oldy + self.ay * delta_t * delta_t
             self.oldx = self.x
             self.oldy = self.y
             self.x = self.newx
             self.y = self.newy
-            
+
             # Collision Process
             if self.x < 0 or self.x > WIDTH:
                 self.x, self.oldx = self.oldx, self.x
             if self.y < 0 or self.y > HEIGHT:
                 self.y, self.oldy = self.oldy, self.y
-                
+
         if self.selected == True:
             pos = pygame.mouse.get_pos()
             self.x = pos[0]
@@ -68,9 +67,10 @@ class Particle:
         if self.selected == True:
             color = RED
         else:
-            color = WHITE        
+            color = WHITE
         pygame.draw.circle(surf, color, (int(self.x), int(self.y)), size)
-        
+
+
 class Constraint:
     def __init__(self, index0, index1):
         self.index0 = index0
@@ -78,12 +78,12 @@ class Constraint:
         delta_x = particles[index0].x - particles[index1].x
         delta_y = particles[index0].y - particles[index1].y
         self.restLength = math.sqrt(delta_x * delta_x + delta_y * delta_y)
-        
+
     def update(self):
         delta_x = particles[self.index1].x - particles[self.index0].x
         delta_y = particles[self.index1].y - particles[self.index0].y
         deltaLength = math.sqrt(delta_x * delta_x + delta_y * delta_y)
-        diff = (deltaLength - self.restLength)/deltaLength
+        diff = (deltaLength - self.restLength) / deltaLength
 
         if particles[self.index0].fixed == False:
             particles[self.index0].x += 0.5 * diff * delta_x
@@ -91,20 +91,20 @@ class Constraint:
         if particles[self.index1].fixed == False:
             particles[self.index1].x -= 0.5 * diff * delta_x
             particles[self.index1].y -= 0.5 * diff * delta_y
-            
+
     def draw(self, surf, size):
         x0 = particles[self.index0].x
         y0 = particles[self.index0].y
         x1 = particles[self.index1].x
         y1 = particles[self.index1].y
         pygame.draw.line(surf, WHITE, (int(x0), int(y0)), (int(x1), int(y1)), size)
-        
+
 
 def find_particle(pos):
     for i in range(len(particles)):
         dx = particles[i].x - pos[0]
         dy = particles[i].y - pos[1]
-        if (dx*dx + dy*dy) < 400:
+        if (dx * dx + dy * dy) < 400:
             particles[i].selected = True
             break
 
@@ -157,17 +157,18 @@ def run():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                #sys.exit()
+                # sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse = True
             if event.type == pygame.MOUSEBUTTONUP:
                 mouse = False
 
-        if mouse==True:
+        if mouse == True:
             pos = pygame.mouse.get_pos()
             find_particle(pos)
 
         pygame.display.update()
         fpsClock.tick(FPS)
+
 
 run()

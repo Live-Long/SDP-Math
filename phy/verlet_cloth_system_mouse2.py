@@ -2,7 +2,7 @@ import pygame, sys, math
 
 pygame.init()
 
-FPS = 60 # frames per second setting
+FPS = 60  # frames per second setting
 fpsClock = pygame.time.Clock()
 
 # set up the window
@@ -15,8 +15,9 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 
+
 class Particle:
-    def __init__(self, x, y, m = 1.0):
+    def __init__(self, x, y, m=1.0):
         self.m = m
         self.x = x
         self.y = y
@@ -26,42 +27,43 @@ class Particle:
         self.newy = y
         self.ax = 0
         self.ay = 9.8
-        
+
         self.fixed = False
         self.selected = False
-        
+
     def update(self, delta_t):
         if self.fixed == False:
             # Verlet Integration
-            self.newx = 2.0 * self.x - self.oldx + self.ax * delta_t * delta_t 
-            self.newy = 2.0 * self.y - self.oldy + self.ay * delta_t * delta_t 
+            self.newx = 2.0 * self.x - self.oldx + self.ax * delta_t * delta_t
+            self.newy = 2.0 * self.y - self.oldy + self.ay * delta_t * delta_t
             self.oldx = self.x
             self.oldy = self.y
             self.x = self.newx
             self.y = self.newy
-            
+
             # Collision Process
             if self.x < 0 or self.x > WIDTH:
                 self.x, self.oldx = self.oldx, self.x
             if self.y < 0 or self.y > HEIGHT:
                 self.y, self.oldy = self.oldy, self.y
-                
+
         if mouse == False:
             self.selected = False
-            
+
         if self.selected == True:
             self.x, self.y = pygame.mouse.get_pos()
 
     def set_pos(self, pos):
         self.x, self.y = pos
-        
+
     def draw(self, surf, size):
         if self.selected == True:
             color = RED
         else:
-            color = WHITE        
+            color = WHITE
         pygame.draw.circle(surf, color, (int(self.x), int(self.y)), size)
-        
+
+
 class Constraint:
     def __init__(self, index0, index1):
         self.index0 = index0
@@ -69,12 +71,12 @@ class Constraint:
         delta_x = particles[index0].x - particles[index1].x
         delta_y = particles[index0].y - particles[index1].y
         self.restLength = math.sqrt(delta_x * delta_x + delta_y * delta_y)
-        
+
     def update(self):
         delta_x = particles[self.index1].x - particles[self.index0].x
         delta_y = particles[self.index1].y - particles[self.index0].y
         deltaLength = math.sqrt(delta_x * delta_x + delta_y * delta_y)
-        diff = (deltaLength - self.restLength)/(deltaLength+ 0.001)
+        diff = (deltaLength - self.restLength) / (deltaLength + 0.001)
 
         if particles[self.index0].fixed == False:
             particles[self.index0].x += 0.5 * diff * delta_x
@@ -82,24 +84,25 @@ class Constraint:
         if particles[self.index1].fixed == False:
             particles[self.index1].x -= 0.5 * diff * delta_x
             particles[self.index1].y -= 0.5 * diff * delta_y
-            
+
     def draw(self, surf, size):
         x0 = particles[self.index0].x
         y0 = particles[self.index0].y
         x1 = particles[self.index1].x
         y1 = particles[self.index1].y
         pygame.draw.line(surf, WHITE, (int(x0), int(y0)), (int(x1), int(y1)), size)
-        
+
 
 def find_particle(pos):
     for i in range(len(particles)):
         dx = particles[i].x - pos[0]
         dy = particles[i].y - pos[1]
-        if (dx*dx + dy*dy) < 300:
+        if (dx * dx + dy * dy) < 300:
             particles[i].selected = True
             particles[i].set_pos(pos)
             break
-            
+
+
 delta_t = 0.1
 NUM_ITER = 3
 mouse = False
@@ -117,11 +120,13 @@ for j in range(NUM_Y):
         particles.append(p)
 
 particles[0].fixed = True
-particles[NUM_X-1].fixed = True
-particles[(NUM_Y-1) * NUM_X].fixed = True
+particles[NUM_X - 1].fixed = True
+particles[(NUM_Y - 1) * NUM_X].fixed = True
 particles[(NUM_Y) * NUM_X - 1].fixed = True
 
 constraints = []
+
+
 def run():
     global mouse
     for j in range(NUM_Y):
@@ -184,5 +189,5 @@ def run():
         fpsClock.tick(FPS)
     pygame.quit()
 
-            
+
 run()

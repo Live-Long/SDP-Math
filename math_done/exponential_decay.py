@@ -6,6 +6,7 @@ from tkinter import *
 
 from PIL import ImageTk, Image
 
+
 def expodecay():
     I = 1
     a = 2
@@ -36,9 +37,11 @@ def expodecay():
     ylabel('u')
     savefig("Exponential Decay.png")
 
+
 def run():
     expodecay()
-    imgx = 600; imgy = 600
+    imgx = 600;
+    imgy = 600
     root = Tk()
     root.geometry('{}x{}'.format(imgx, imgy))
 
@@ -47,11 +50,12 @@ def run():
 
     imgName = "Exponential Decay.png"
     root.title("Exponential Decay")
-    canvas = Canvas(root, width = imgx, height = imgy)
+    canvas = Canvas(root, width=imgx, height=imgy)
     canvas.pack()
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
-    #os.remove(imgName)
+    # os.remove(imgName)
     root.mainloop()
+
 
 run()

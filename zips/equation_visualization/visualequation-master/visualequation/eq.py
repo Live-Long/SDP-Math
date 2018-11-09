@@ -26,12 +26,13 @@ from .symbols import utils
 from . import eqsel
 from .errors import ShowError
 
+
 class Eq:
     def __init__(self, temp_dir, setPixmap, parent):
 
         init_eq = [utils.NEWARG]
         self.eq_buffer = []
-        self.eq = list(init_eq) # It will be mutated by the replace functions
+        self.eq = list(init_eq)  # It will be mutated by the replace functions
         self.temp_dir = temp_dir
         self.parent = parent
         self.eqsel = eqsel.Selection(init_eq, 0, temp_dir, setPixmap)
@@ -43,12 +44,13 @@ class Eq:
         Insert a symbol next to selection by Juxt and, if it is an operator,
         set all the arguments to NewArg.
         """
+
         def replace_op_in_eq(op):
             """
             Given an operator, it is replaced in self.eq according to
             the rules of above. It also modify self.eqsel.index to point to
             the smartest block.
-            """            
+            """
             if isinstance(op, str):
                 if self.eq[self.eqsel.index] == utils.NEWARG:
                     self.eq[self.eqsel.index] = op
@@ -60,9 +62,9 @@ class Eq:
                         self.eqsel.index = eqtools.insertlbyJUXT(
                             self.eq, self.eqsel.index, [op])
             elif isinstance(op, utils.Op):
-                opeq = [op] + [utils.NEWARG]*op.n_args
+                opeq = [op] + [utils.NEWARG] * op.n_args
                 if self.eq[self.eqsel.index] == utils.NEWARG:
-                    self.eq[self.eqsel.index:self.eqsel.index+1] = opeq
+                    self.eq[self.eqsel.index:self.eqsel.index + 1] = opeq
                 else:
                     if self.eqsel.right:
                         self.eqsel.index \
@@ -77,7 +79,7 @@ class Eq:
                 # Point to the first argument, if any
                 if op.n_args > 0:
                     self.eqsel.index += 1
-                    
+
             else:
                 ShowError('Unknown type of operator in insert: ' + repr(op),
                           True)
@@ -113,6 +115,7 @@ class Eq:
         changed to the second argument of the operator because the user
         probably will want to change that argument.
         """
+
         def replace_op_in_eq(op):
             """
             Given an operator, it is replaced in self.eq according to
@@ -120,7 +123,7 @@ class Eq:
             the smartest block.
             """
             if isinstance(op, str) or \
-               (isinstance(op, utils.Op) and op.n_args == 0):
+                    (isinstance(op, utils.Op) and op.n_args == 0):
                 eqtools.replaceby(self.eq, self.eqsel.index, [op])
             elif isinstance(op, utils.Op) and op.n_args == 1:
                 self.eq.insert(self.eqsel.index, op)
@@ -128,9 +131,9 @@ class Eq:
                 index_end_arg1 = eqtools.nextblockindex(self.eq,
                                                         self.eqsel.index)
                 self.eq[self.eqsel.index:index_end_arg1] = [op] \
-                                    + self.eq[self.eqsel.index:index_end_arg1] \
-                                    + [utils.NEWARG] * (op.n_args-1)
-                self.eqsel.index = index_end_arg1+1
+                                                           + self.eq[self.eqsel.index:index_end_arg1] \
+                                                           + [utils.NEWARG] * (op.n_args - 1)
+                self.eqsel.index = index_end_arg1 + 1
             else:
                 ShowError('Unknown type of operator in insert_subst: '
                           + repr(op), True)
@@ -151,7 +154,7 @@ class Eq:
     def insert_sup_substituting(self):
         # Blacklist some operators
         if hasattr(self.eq[self.eqsel.index], 'type_') \
-           and self.eq[self.eqsel.index].type_ in utils.INDEX_BLACKLIST:
+                and self.eq[self.eqsel.index].type_ in utils.INDEX_BLACKLIST:
             return
 
         self.eqhist.update(self.eqsel)
@@ -183,7 +186,7 @@ class Eq:
         # Flat the list of args
         new_args = eqtools.flat_arglist(args)
         new_block = [new_op] + new_args
-        end_old_block = eqtools.nextblockindex(self.eq, self.eqsel.index) 
+        end_old_block = eqtools.nextblockindex(self.eq, self.eqsel.index)
         self.eq[self.eqsel.index:end_old_block] = new_block
 
         self.eqsel.index += 1 + elems
@@ -193,7 +196,7 @@ class Eq:
     def insert_sub_substituting(self):
         # Blacklist some operators
         if hasattr(self.eq[self.eqsel.index], 'type_') \
-           and self.eq[self.eqsel.index].type_ in utils.INDEX_BLACKLIST:
+                and self.eq[self.eqsel.index].type_ in utils.INDEX_BLACKLIST:
             return
 
         self.eqhist.update(self.eqsel)
@@ -201,10 +204,10 @@ class Eq:
         if self.eq[self.eqsel.index] == utils.JUXT:
             if self.eqsel.right:
                 self.eqsel.index = eqtools.last_arg_of_JUXT_seq(self.eq,
-                                                              self.eqsel.index)
+                                                                self.eqsel.index)
             else:
                 self.eqsel.index = eqtools.first_arg_of_JUXT_seq(self.eq,
-                                                               self.eqsel.index)
+                                                                 self.eqsel.index)
         # Create a list with a index arg list
         args = eqtools.indexop2arglist(self.eq, self.eqsel.index)
         # Change it to add the new index
@@ -225,7 +228,7 @@ class Eq:
         # Flat the list of args
         new_args = eqtools.flat_arglist(args)
         new_block = [new_op] + new_args
-        end_old_block = eqtools.nextblockindex(self.eq, self.eqsel.index) 
+        end_old_block = eqtools.nextblockindex(self.eq, self.eqsel.index)
         self.eq[self.eqsel.index:end_old_block] = new_block
 
         self.eqsel.index += 1 + elems
@@ -248,10 +251,10 @@ class Eq:
             # If eqsel.index is the first argument (instead of the second)
             if JUXT_index + 1 == self.eqsel.index:
                 self.eq[JUXT_index:JUXT_end] = self.eq[
-                    other_arg_index:JUXT_end]
+                                               other_arg_index:JUXT_end]
             else:
                 self.eq[JUXT_index:JUXT_end] = self.eq[
-                    other_arg_index:self.eqsel.index]
+                                               other_arg_index:self.eqsel.index]
             self.eqsel.index = JUXT_index
         else:
             # If it is a script, downgrade the script operator
@@ -357,15 +360,15 @@ class Eq:
         """
         if self.eq_buffer != []:
             if self.eq[self.eqsel.index] == utils.NEWARG:
-                self.eq[self.eqsel.index:self.eqsel.index+1] = self.eq_buffer
+                self.eq[self.eqsel.index:self.eqsel.index + 1] = self.eq_buffer
             else:
                 if self.eqsel.right:
                     self.eqsel.index = eqtools.insertrbyJUXT(self.eq,
-                                                           self.eqsel.index,
-                                                           self.eq_buffer)
+                                                             self.eqsel.index,
+                                                             self.eq_buffer)
                 else:
                     self.eqsel.index = eqtools.insertlbyJUXT(self.eq,
-                                                           self.eqsel.index,
-                                                           self.eq_buffer)
+                                                             self.eqsel.index,
+                                                             self.eq_buffer)
             self.eqsel.display(self.eq)
             self.eqhist.save(self.eqsel)

@@ -27,6 +27,7 @@ from . import eqtools
 from .symbols import utils
 from .errors import ShowError
 
+
 def eq2latex_file(eq, latex_file, template_file):
     """
     Write equation in a LaTeX file using the template template_file.
@@ -45,6 +46,7 @@ def eq2latex_file(eq, latex_file, template_file):
                 flatex.write(line.replace('%EQ%',
                                           '%' + repr(eq) + "\n" + latex_code))
 
+
 def latex_file2dvi(latex_file, output_dir):
     """
     Compile the LaTeX file to DVI image and put the output in the given dir.
@@ -57,16 +59,17 @@ def latex_file2dvi(latex_file, output_dir):
                                  latex_file])
     except subprocess.CalledProcessError as error:
         msg = "Error reported by latex. The equation cannot be generated.\n" \
-        + "If you have installed the required packages, it could be " \
-        + "an internal error. Please, report it including " \
-        + "the content of the following file:\n" + latex_file + "\n" \
-        + "Finishing execution."
+              + "If you have installed the required packages, it could be " \
+              + "an internal error. Please, report it including " \
+              + "the content of the following file:\n" + latex_file + "\n" \
+              + "Finishing execution."
         ShowError(msg, True)
     except OSError:
         msg = "Command latex was not found. This is an essential " \
               + "program for Visual Equation. Finishing execution."
         ShowError(msg, True)
-    
+
+
 def dvi2png(dvi_file, png_file, log_file, dpi, bg):
     """ Convert a DVI file to PNG.
     The log is saved in the specified file.
@@ -84,32 +87,35 @@ def dvi2png(dvi_file, png_file, log_file, dpi, bg):
                   + "program for Visual Equation. Finishing execution."
             ShowError(msg, True)
 
+
 def dvi2eps(dvi_file, eps_file, log_file):
     """ Convert the DVI file to PostScript. """
     with open(log_file, "w") as flog:
         try:
-            subprocess.call(["dvips", "-E", "-D", "600", "-Ppdf", 
+            subprocess.call(["dvips", "-E", "-D", "600", "-Ppdf",
                              "-o", eps_file, dvi_file], stderr=flog)
         except OSError:
             ShowError("Command dvips was not found. No EPS was created.",
                       False)
-            
+
+
 def eps2pdf(eps_file, pdf_file):
     try:
         subprocess.call(["epstopdf", "--outfile", pdf_file, eps_file])
     except OSError:
         ShowError("Command epstopdf was not found. No PDF was created.", False)
-        
+
+
 # eps2svg: Ouput SVG has bounding box problems
 # In Ekee it seems solved by hand but I am not able to reproduce the fix
-#def eps2svg(eps_file, svg_file, log_file):
+# def eps2svg(eps_file, svg_file, log_file):
 #    with open(log_file, "w") as flog:
 #        subprocess.call(["pstoedit", "-dt", "-ssp", "-f", "plot-svg",
 #                         eps_file, svg_file], stderr=flog)
 
 # pdf2svg: It does not work so good in some sytems (eps produced),
 # specially the \text fields (very bad pixeled)
-#def pdf2svg(pdf_file, svg_file):
+# def pdf2svg(pdf_file, svg_file):
 #    subprocess.call(["pdf2svg", pdf_file, svg_file])
 
 def dvi2svg(dvi_file, svg_file, log_file):
@@ -123,20 +129,23 @@ def dvi2svg(dvi_file, svg_file, log_file):
     """
     with open(log_file, "w") as flog:
         try:
-            subprocess.call(["dvisvgm", "--no-fonts", "--scale=5,5", 
+            subprocess.call(["dvisvgm", "--no-fonts", "--scale=5,5",
                              "-o", svg_file, dvi_file], stderr=flog)
         except OSError:
             msg = "Command dvisvgm was not found. No SVG was created."
             ShowError(msg, False)
 
+
 class MyEncoder(json.JSONEncoder):
     def default(self, o):
         return o.__dict__
+
 
 def from_json(json_o):
     if isinstance(json_o, dict):
         return utils.Op(json_o['n_args'], json_o['latex_code'],
                         json_o['type_'])
+
 
 def eq2png(eq, dpi, bg, directory, png_fpath=None, add_metadata=False,
            latex_template=None):
@@ -183,6 +192,7 @@ def eq2png(eq, dpi, bg, directory, png_fpath=None, add_metadata=False,
                 ShowError(msg, False)
     return png_fpath
 
+
 def eq2eps(eq, directory, eps_fpath=None):
     """ Create a eps from a equation, returns the path of eps image.
 
@@ -204,6 +214,7 @@ def eq2eps(eq, directory, eps_fpath=None):
     latex_file2dvi(latex_fpath, directory)
     dvi2eps(dvi_fpath, eps_fpath, dvi2epslog_fpath)
     return eps_fpath
+
 
 def eq2pdf(eq, directory, pdf_fpath=None):
     """
@@ -237,6 +248,7 @@ def eq2pdf(eq, directory, pdf_fpath=None):
                 ShowError(msg, False)
     return pdf_fpath
 
+
 def eq2svg(eq, directory, svg_fpath):
     """ Converts the equation to SVG"""
 
@@ -245,14 +257,15 @@ def eq2svg(eq, directory, svg_fpath):
         ShowError('Temporal directory used by eq2svg does not exist.', True)
     fname = 've'
     latex_fpath = os.path.join(directory, fname + '.tex')
-    dvi_fpath = os.path.join(directory, fname + '.dvi')    
+    dvi_fpath = os.path.join(directory, fname + '.dvi')
     dvi2svglog_path = os.path.join(directory,
                                    fname + '_dvi2svg.log')
     eq2latex_file(eq, latex_fpath, commons.LATEX_TEMPLATE)
     latex_file2dvi(latex_fpath, directory)
     dvi2svg(dvi_fpath, svg_fpath, dvi2svglog_path)
 
-def open_eq(parent, filename = None):
+
+def open_eq(parent, filename=None):
     "Return equation inside a file chosen interactively. Else, None."
     if not filename:
         filename, _ = QFileDialog.getOpenFileName(
@@ -283,5 +296,3 @@ def open_eq(parent, filename = None):
               + "Was the file created with your version of Visual Equation?"
         ShowError(msg, False, parent)
         return None
-
-        

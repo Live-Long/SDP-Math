@@ -23,6 +23,7 @@ from .symbols import utils
 from . import conversions
 from . import eq
 
+
 class EqLabel(QLabel):
     def __init__(self, temp_dir, parent):
         super().__init__(parent)
@@ -38,7 +39,7 @@ class EqLabel(QLabel):
         else:
             return QLabel.event(self, event)
 
-    #def mousePressEvent(self, event):
+    # def mousePressEvent(self, event):
     #    if event.button() == Qt.LeftButton:
     #        self.eq.next_sel()
     #    elif event.button() == Qt.RightButton:
@@ -54,12 +55,12 @@ class EqLabel(QLabel):
         eq_png = conversions.eq2png(self.eq.eq, dpi=None, bg=None,
                                     directory=self.eq.temp_dir,
                                     png_fpath=os.path.join(self.eq.temp_dir,
-                                                           base +'.png'),
+                                                           base + '.png'),
                                     add_metadata=True)
         mimedata = QMimeData()
-        mimedata.setImageData(QImage(eq_png)) # does not work for web browser
-        #mimedata.setText(eq_png) # text-editor and console
-        #mimedata.setUrls([QUrl.fromLocalFile(eq_png)]) # nautilus
+        mimedata.setImageData(QImage(eq_png))  # does not work for web browser
+        # mimedata.setText(eq_png) # text-editor and console
+        # mimedata.setUrls([QUrl.fromLocalFile(eq_png)]) # nautilus
         drag = QDrag(self)
         drag.setPixmap(QPixmap(eq_png))
         drag.setMimeData(mimedata)
@@ -77,7 +78,7 @@ class EqLabel(QLabel):
         try:
             code = ord(event.text())
             if (48 <= code <= 57 or 65 <= code <= 90 or 97 <= code <= 122) \
-               and QApplication.keyboardModifiers() != Qt.ControlModifier:
+                    and QApplication.keyboardModifiers() != Qt.ControlModifier:
                 self.eq.insert(event.text())
         except TypeError:
             pass

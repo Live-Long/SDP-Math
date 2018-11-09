@@ -45,7 +45,7 @@ SOMEOPERATORS = [
     LatexSymb('cap', r'\cap'),
     LatexSymb('cup', r'\cup'),
     LatexSymb('sqcap', r'\sqcap'),
-    LatexSymb('sqcup', r'\sqcup'),    
+    LatexSymb('sqcup', r'\sqcup'),
     LatexSymb('wedge', r'\wedge'),
     LatexSymb('vee', r'\vee'),
     LatexSymb('forall', r'\forall'),

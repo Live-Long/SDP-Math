@@ -25,6 +25,7 @@ from .symbols import lists
 from . import commons
 from .errors import ShowError
 
+
 class TabWidget(QTabWidget):
     def __init__(self, parent, maineq):
         super().__init__(parent)
@@ -40,8 +41,8 @@ class TabWidget(QTabWidget):
             icon = QIcon(icon_path)
             self.setIconSize(QSize(50, 30))
             self.addTab(self.tabs[index], icon, "")
-            #self.setTabToolTip(index, "Hello")
-            #self.setTabWhatsThis(index, "Hello")
+            # self.setTabToolTip(index, "Hello")
+            # self.setTabWhatsThis(index, "Hello")
             layout = QGridLayout(self)
             row = 0
             column = 0
@@ -52,7 +53,7 @@ class TabWidget(QTabWidget):
                     ShowError("Icon " + symb.tag + " not found.", True)
                 label.setPixmap(QPixmap(icon_path))
                 cmd = lambda state, code=symb.code: \
-                      self.handle_click(state, code)
+                    self.handle_click(state, code)
                 label.mousePressEvent = cmd
                 layout.addWidget(label, row, column)
                 label.setAlignment(Qt.AlignCenter)
@@ -60,7 +61,7 @@ class TabWidget(QTabWidget):
                 if column > 9:
                     column = 0
                     row += 1
-             
+
             self.tabs[index].setLayout(layout)
 
     def handle_click(self, event, code):

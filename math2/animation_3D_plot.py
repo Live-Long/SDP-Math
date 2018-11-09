@@ -17,19 +17,16 @@ df['X'] = df['X'].cat.codes
 
 # We are going to do 20 plots, for 20 different angles
 for angle in range(70, 210, 2):
-
-# Make the plot
+    # Make the plot
     fig = plt.figure()
     ax = fig.gca(projection='3d')
     ax.plot_trisurf(df['Y'], df['X'], df['Z'], cmap=plt.cm.viridis, linewidth=0.2)
 
-# Set the angle of the camera
+    # Set the angle of the camera
     ax.view_init(30, angle)
 
-
-
-# Save it
+    # Save it
     filename = 'PNG/ANIMATION/Volcano_step' + str(angle) + '.png'
-#plt.savefig(filename, dpi=96)
+    # plt.savefig(filename, dpi=96)
     plt.gca()
     plt.show()

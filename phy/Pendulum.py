@@ -1,4 +1,3 @@
-
 from math import sin, cos, pi, atan2, sqrt
 
 import pygame
@@ -221,5 +220,6 @@ def run():
         held_group.draw(screen)
         # pygame.draw.circle(screen, COLOR['blue'], SCREEN_CENTER, 50, 0)
         pygame.display.flip()
+
 
 run()

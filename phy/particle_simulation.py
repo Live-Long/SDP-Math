@@ -11,6 +11,7 @@ screen = pygame.display.set_mode((width, height))
 number_of_particles = 0
 my_particles = []
 
+
 class ParticleFactory(object):
     def create_particle(self, type):
         size = random.randint(10, 20)
@@ -18,11 +19,11 @@ class ParticleFactory(object):
         x = random.randint(size, width - size)
         y = random.randint(size, height - size)
 
-        if type=='red':
+        if type == 'red':
             particle = RedParticle(x, y, size, density * size ** 2)
-        elif type=='green':
+        elif type == 'green':
             particle = GreenParticle(x, y, size, density * size ** 2)
-        elif type=='blue':
+        elif type == 'blue':
             particle = BlueParticle(x, y, size, density * size ** 2)
         particle.speed = random.random()
         particle.angle = random.uniform(0, math.pi * 2)
@@ -70,7 +71,8 @@ def collide(p1, p2):
 
 
 class Particle():
-    colour = (0,0,0)
+    colour = (0, 0, 0)
+
     def __init__(self, x, y, size, mass=1):
         self.x = x
         self.y = y
@@ -114,12 +116,15 @@ class Particle():
 
 
 class RedParticle(Particle):
-    colour = (255,0,0)
-class GreenParticle(Particle):
-    colour = (0,255,0)
-class BlueParticle(Particle):
-    colour = (0,0,255)
+    colour = (255, 0, 0)
 
+
+class GreenParticle(Particle):
+    colour = (0, 255, 0)
+
+
+class BlueParticle(Particle):
+    colour = (0, 0, 255)
 
 
 def run():
@@ -139,13 +144,13 @@ def run():
                 running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_r:
-                    number_of_particles = number_of_particles +1
+                    number_of_particles = number_of_particles + 1
                     factory.create_particle('red')
                 elif event.key == pygame.K_g:
-                    number_of_particles = number_of_particles +1
+                    number_of_particles = number_of_particles + 1
                     factory.create_particle('green')
                 elif event.key == pygame.K_b:
-                    number_of_particles = number_of_particles +1
+                    number_of_particles = number_of_particles + 1
                     factory.create_particle('blue')
 
             elif event.type == pygame.MOUSEBUTTONDOWN:

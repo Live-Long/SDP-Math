@@ -1,6 +1,6 @@
 from pygame import *
-clock = time.Clock()
 
+clock = time.Clock()
 
 info = {
     'window_size': (500, 300),
@@ -8,6 +8,7 @@ info = {
     'background': (50, 50, 50),
     'live_colour': (255, 255, 255),
 }
+
 
 def setInfo(height, width, size):
     info = {
@@ -18,22 +19,25 @@ def setInfo(height, width, size):
     }
     return info
 
+
 def make_grid(size):
     grid = [False for i in range(size ** 2)]
     return grid
+
 
 def pos_to_index(info, pos):
     index = pos[0]
     index += pos[1] * info['grid_size']
     return index
 
+
 def index_to_pos(info, index):
     y = (int(index / info['grid_size']))
     x = (index - (y * info['grid_size']))
     return x, y
 
-def change_cells(grid, info):
 
+def change_cells(grid, info):
     change = None
     if mouse.get_pressed()[0]: change = True
     if mouse.get_pressed()[2]: change = False
@@ -43,14 +47,12 @@ def change_cells(grid, info):
 
         # Is it in a valid spot?
         if pos[0] >= 0 and pos[1] >= 0 and pos[0] <= info['grid_size'] and pos[1] <= info['grid_size']:
-
             index = pos_to_index(info, pos)
             grid[index] = change
     return grid
 
 
 def get_pos_on_game(info):
-
     pos = list(mouse.get_pos())
     game_scale = info['game_size'] / info['grid_size']
 
@@ -67,7 +69,6 @@ def get_pos_on_game(info):
 
 
 def show_messages(window, info, messages):
-
     max_height = 30
     margin = 10
 
@@ -76,12 +77,11 @@ def show_messages(window, info, messages):
     for index in range(len(messages)):
         surf = f.render(messages[index], 0, (255, 255, 255))
 
-        y = (margin + max_height) * index +  margin
+        y = (margin + max_height) * index + margin
         window.blit(surf, (margin, y))
 
 
 def show_cells(window, grid, info):
-
     game_scale = info['game_size'] / info['grid_size']
     for value_index in range(len(grid)):
 
@@ -89,7 +89,8 @@ def show_cells(window, grid, info):
         x, y = index_to_pos(info, value_index)
 
         value = grid[value_index]
-        if value: draw.rect(window, info['live_colour'], (x * game_scale, y * game_scale, int(game_scale), int(game_scale)))
+        if value: draw.rect(window, info['live_colour'],
+                            (x * game_scale, y * game_scale, int(game_scale), int(game_scale)))
 
 
 def update_cells(info, grid):
@@ -108,12 +109,12 @@ def update_cells(info, grid):
             new_pos = pos[0] + x, pos[1] + y
 
             # Is the new spot valid
-            if new_pos[0] >= 0 and new_pos[1] >= 0 and new_pos[0] < info['grid_size'] and new_pos[1] < info['grid_size']:
+            if new_pos[0] >= 0 and new_pos[1] >= 0 and new_pos[0] < info['grid_size'] and new_pos[1] < info[
+                'grid_size']:
                 new_index = pos_to_index(info, new_pos)
 
                 if not new_index in live_cells:
                     neighbour_cells.append(new_index)
-
 
     for cell_type in range(0, 2):
         cells = [live_cells, neighbour_cells][cell_type]
@@ -126,7 +127,8 @@ def update_cells(info, grid):
                 new_pos = pos[0] + x, pos[1] + y
 
                 # Is the new spot valid
-                if new_pos[0] >= 0 and new_pos[1] >= 0 and new_pos[0] < info['grid_size'] and new_pos[1] < info['grid_size']:
+                if new_pos[0] >= 0 and new_pos[1] >= 0 and new_pos[0] < info['grid_size'] and new_pos[1] < info[
+                    'grid_size']:
 
                     new_index = pos_to_index(info, new_pos)
                     if copy[new_index]: neighbours += 1
@@ -137,9 +139,12 @@ def update_cells(info, grid):
                     grid[index] = True
 
             else:
-                if neighbours < 2: grid[index] = False
-                elif neighbours <= 3: pass
-                elif neighbours >= 4: grid[index] = False
+                if neighbours < 2:
+                    grid[index] = False
+                elif neighbours <= 3:
+                    pass
+                elif neighbours >= 4:
+                    grid[index] = False
 
             # If dead
 
@@ -150,7 +155,7 @@ def game(height, width, size):
     import time
 
     # Add the game size (NOT window size) to info
-    info = setInfo(height,width,size)
+    info = setInfo(height, width, size)
     info['game_size'] = int(min(info['window_size']))
     grid = make_grid(info['grid_size'])
 
@@ -172,7 +177,6 @@ def game(height, width, size):
         # Resize loop
         for e in event.get():
             if e.type == VIDEORESIZE:
-
                 # Set sizes
                 info['window_size'] = e.w, e.h
                 info['game_size'] = int(min(info['window_size']))
@@ -209,7 +213,6 @@ def game(height, width, size):
                 t -= 1
                 last_time = time.time()
 
-
         messages = ['Time since last: ' + str(round(time.time() - last_time, 5)),
                     'Speed: ' + str(round(speed, 5)),
                     'Running: ' + str(bool(running)),
@@ -222,9 +225,9 @@ def game(height, width, size):
 
         # Add the game window to the main and show
         main_window.fill((10, 10, 10))
-        main_window.blit(game_window, ((info['window_size'][0] - info['game_size']) / 2, (info['window_size'][1] - info['game_size']) / 2))
+        main_window.blit(game_window, (
+        (info['window_size'][0] - info['game_size']) / 2, (info['window_size'][1] - info['game_size']) / 2))
         # show_messages(main_window, info, messages)
         display.update()
 
-
-#game(500,300,100)
+# game(500,300,100)

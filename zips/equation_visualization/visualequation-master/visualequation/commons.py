@@ -14,7 +14,7 @@
 """This modules indicates the directories of the program."""
 import os, sys, site
 
-VERSION="0.3.7"
+VERSION = "0.3.7"
 
 # Set the path to common files
 # Valid for execution in the sources tree
@@ -29,8 +29,8 @@ elif os.path.exists(os.path.join(site.USER_BASE, 'share', 'visualequation')):
 # Valid for installation through "pip install --prefix=" in GNU/Linux
 else:
     _MATCH = "lib" + os.sep + "python" + str(sys.version_info.major) + "." \
-            + str(sys.version_info.minor) \
-            + os.sep + "site-packages" + os.sep + "visualequation"
+             + str(sys.version_info.minor) \
+             + os.sep + "site-packages" + os.sep + "visualequation"
     _NEW_PART = "share" + os.sep + "visualequation"
     _NEW_PATH = os.path.dirname(__file__).replace(_MATCH, _NEW_PART)
     if os.path.exists(_NEW_PATH):
@@ -39,9 +39,9 @@ else:
         # Do not use ShowError here (you would need a QApplication)
         raise SystemExit("Could not find where data files are located.")
 
-#DATA_DIR = os.path.dirname(resource_filename(__name__, "visualequation.desktop"))
+# DATA_DIR = os.path.dirname(resource_filename(__name__, "visualequation.desktop"))
 
-#print("This is DATA_DIR: ", DATA_DIR, "\n", subprocess.check_output("pwd"),"\n\n")
+# print("This is DATA_DIR: ", DATA_DIR, "\n", subprocess.check_output("pwd"),"\n\n")
 ICONS_DIR = os.path.join(DATA_DIR, 'icons')
 LATEX_TEMPLATE = os.path.join(DATA_DIR, 'eq_template.tex')
 ICON = os.path.join(DATA_DIR, 'visualequation.png')

@@ -11,9 +11,11 @@ __version__ = "0.1.2"
 # python main.py -m screen:iphone4,portrait
 
 import random
+
 random.seed(5)
 
 import kivy
+
 kivy.require('1.9.1')
 
 from kivy.app import App
@@ -37,7 +39,7 @@ from pymunk.vec2d import Vec2d
 
 
 class PymunkDemo(RelativeLayout):
-    
+
     def small_ball(self, space):
         for x in range(10):
             mass = 3
@@ -48,14 +50,14 @@ class PymunkDemo(RelativeLayout):
             c.friction = 1
             x = random.randint(100, 350)
             y = random.randint(300, 340)
-            b.position = x,y
+            b.position = x, y
 
-            space.add(b,c)
+            space.add(b, c)
 
             with self.canvas:
-                Color(.2,.6,.86)
+                Color(.2, .6, .86)
                 c.ky = self.ellipse_from_circle(c)
-            
+
     def big_ball(self, space):
         mass = 1000
         radius = 50
@@ -63,54 +65,51 @@ class PymunkDemo(RelativeLayout):
         b = pymunk.Body(mass, moment)
         c = pymunk.Circle(b, radius)
         c.friction = 1
-        c.color = 255,0,0
+        c.color = 255, 0, 0
         b.position = 800, 200
-        b.apply_impulse_at_local_point((-10000,0),(0,1000))
+        b.apply_impulse_at_local_point((-10000, 0), (0, 1000))
 
-        space.add(b,c)
-        
+        space.add(b, c)
+
         with self.canvas:
-            Color(1,0,0)
+            Color(1, 0, 0)
             c.ky = self.ellipse_from_circle(c)
-        
 
     def boxfloor(self, space):
         mass = 10
-        vs = [(-50,30),(60,22),(-50, 22)]
-        
+        vs = [(-50, 30), (60, 22), (-50, 22)]
+
         moment = pymunk.moment_for_poly(mass, vs)
         b = pymunk.Body(mass, moment)
         s = pymunk.Poly(b, vs)
         s.friction = 1
-        s.color = 0,0,0
-        b.position = 600,250
+        s.color = 0, 0, 0
+        b.position = 600, 250
 
-        space.add(b,s)
+        space.add(b, s)
         with self.canvas:
-            Color(0.2,0.2,0.2)
+            Color(0.2, 0.2, 0.2)
             s.ky = Triangle(points=self.points_from_poly(s))
 
-    
-    def box(self, space):        
+    def box(self, space):
         mass = 10
-        moment = pymunk.moment_for_box(mass, (40,20))
+        moment = pymunk.moment_for_box(mass, (40, 20))
         b = pymunk.Body(mass, moment)
-        s = pymunk.Poly.create_box(b, (40,20))
+        s = pymunk.Poly.create_box(b, (40, 20))
         s.friction = 1
         b.position = 600, self.box_y
         self.box_y += 30
-        space.add(b,s)
-        
+        space.add(b, s)
+
         with self.canvas:
-            Color(0.2,0.2,0.2)
+            Color(0.2, 0.2, 0.2)
             s.ky = Quad(points=self.points_from_poly(s))
 
-
     def car(self, space):
-        pos = Vec2d(100,100)
+        pos = Vec2d(100, 100)
 
-        wheel_color = .2,.86,.47
-        shovel_color = .86,.47,.2
+        wheel_color = .2, .86, .47
+        shovel_color = .86, .47, .2
         mass = 100
         radius = 25
         moment = pymunk.moment_for_circle(mass, 20, radius)
@@ -130,29 +129,29 @@ class PymunkDemo(RelativeLayout):
         space.add(wheel2_b, wheel2_s)
 
         mass = 100
-        size = (50,30)
+        size = (50, 30)
         moment = pymunk.moment_for_box(mass, size)
         chassi_b = pymunk.Body(mass, moment)
         chassi_s = pymunk.Poly.create_box(chassi_b, size)
         space.add(chassi_b, chassi_s)
 
-        vs = [(0,0),(0,-45),(25,-45)]
-        shovel_s = pymunk.Poly(chassi_b, vs, transform = pymunk.Transform(tx=85))
+        vs = [(0, 0), (0, -45), (25, -45)]
+        shovel_s = pymunk.Poly(chassi_b, vs, transform=pymunk.Transform(tx=85))
         shovel_s.friction = 0.5
         shovel_s.color = shovel_color
         space.add(shovel_s)
 
-        wheel1_b.position = pos - (55,0)
-        wheel2_b.position = pos + (55,0)
-        chassi_b.position = pos + (0,25)
+        wheel1_b.position = pos - (55, 0)
+        wheel2_b.position = pos + (55, 0)
+        chassi_b.position = pos + (0, 25)
 
         space.add(
-            pymunk.PinJoint(wheel1_b, chassi_b, (0,0), (-25,-15)),
-            pymunk.PinJoint(wheel1_b, chassi_b, (0,0), (-25, 15)),
-            pymunk.PinJoint(wheel2_b, chassi_b, (0,0), (25,-15)),
-            pymunk.PinJoint(wheel2_b, chassi_b, (0,0), (25, 15))
-            )
-        
+            pymunk.PinJoint(wheel1_b, chassi_b, (0, 0), (-25, -15)),
+            pymunk.PinJoint(wheel1_b, chassi_b, (0, 0), (-25, 15)),
+            pymunk.PinJoint(wheel2_b, chassi_b, (0, 0), (25, -15)),
+            pymunk.PinJoint(wheel2_b, chassi_b, (0, 0), (25, 15))
+        )
+
         speed = -4
         space.add(
             pymunk.SimpleMotor(wheel1_b, chassi_b, speed),
@@ -173,10 +172,10 @@ class PymunkDemo(RelativeLayout):
         moment = pymunk.moment_for_circle(mass, 0, radius)
         b = pymunk.Body(mass, moment)
         s = pymunk.Circle(b, radius)
-        s.color = .86,.2,.6
+        s.color = .86, .2, .6
         b.position = 700, 400
-        space.add(b,s)
-        impulse = Vec2d(-200000,-75000)
+        space.add(b, s)
+        impulse = Vec2d(-200000, -75000)
         b.apply_impulse_at_local_point((impulse))
         with self.canvas:
             Color(*s.color)
@@ -184,32 +183,34 @@ class PymunkDemo(RelativeLayout):
 
     def create_logo_lines(self, logo_img):
         logo_bb = pymunk.BB(0, 0, logo_img.width, logo_img.height)
+
         def sample_func(point):
             try:
                 color = logo_img.read_pixel(point.x, point.y)
-                return color[3]*255
+                return color[3] * 255
             except:
                 return 0
 
         line_set = pymunk.autogeometry.PolylineSet()
+
         def segment_func(v0, v1):
-                line_set.collect_segment(v0, v1)
+            line_set.collect_segment(v0, v1)
 
         pymunk.autogeometry.march_soft(
-            logo_bb, 
-            logo_img.width, 
-            logo_img.height, 
-            99, 
-            segment_func, 
+            logo_bb,
+            logo_img.width,
+            logo_img.height,
+            99,
+            segment_func,
             sample_func)
-        
+
         r = 10
-        
+
         letter_group = 0
         lines = []
         for line in line_set:
             line = pymunk.autogeometry.simplify_curves(line, .7)
-            
+
             max_x = 0
             min_x = 1000
             max_y = 0
@@ -219,33 +220,32 @@ class PymunkDemo(RelativeLayout):
                 min_x = min(min_x, l.x)
                 max_y = max(max_y, l.y)
                 min_y = min(min_y, l.y)
-            w,h = max_x - min_x, max_y - min_y    
-                
+            w, h = max_x - min_x, max_y - min_y
+
             # we skip the line which has less than 35 height, since its the "hole" in 
             # the p in pymunk, and we dont need it.
             if h < 35:
                 continue
 
-            center = Vec2d(min_x + w/2., min_y + h/2.)   
+            center = Vec2d(min_x + w / 2., min_y + h / 2.)
             t = pymunk.Transform(a=1.0, d=1.0, tx=-center.x, ty=-center.y)
 
             r += 30
             if r > 255:
                 r = 0
-            line = [Vec2d(l.x, 300-l.y) for l in line]
+            line = [Vec2d(l.x, 300 - l.y) for l in line]
             lines.append(line)
         return lines
 
     def create_logo(self, lines, space):
         for line in lines:
-            for i in range(len(line)-1):
-                shape = pymunk.Segment(space.static_body, line[i], line[i+1], 1)
+            for i in range(len(line) - 1):
+                shape = pymunk.Segment(space.static_body, line[i], line[i + 1], 1)
                 shape.friction = 0.5
                 space.add(shape)
-                      
 
     def init(self):
-        self.step = 1/60.
+        self.step = 1 / 60.
         ci = CoreImage("pymunk_logo.png", keep_data=True)
         self.logo_lines = self.create_logo_lines(ci)
         self.logo_img = ci
@@ -259,15 +259,15 @@ class PymunkDemo(RelativeLayout):
         space.steps = 0
         self.create_logo(self.logo_lines, space)
         with self.canvas:
-            Rectangle(texture=self.logo_img.texture, pos=(0,300-self.logo_img.height), size=self.logo_img.size)
-        
-        floor = pymunk.Segment(space.static_body, (-100,0),(900,62),5)
+            Rectangle(texture=self.logo_img.texture, pos=(0, 300 - self.logo_img.height), size=self.logo_img.size)
+
+        floor = pymunk.Segment(space.static_body, (-100, 0), (900, 62), 5)
         floor.friction = 1.0
         space.add(floor)
         with self.canvas:
-            Color(0.2,0.2,0.2)
-            floor.ky = Line(points=[-100,0,900,62], width=5)
-            
+            Color(0.2, 0.2, 0.2)
+            floor.ky = Line(points=[-100, 0, 900, 62], width=5)
+
         def wrap(f):
             return lambda dt: f(space)
 
@@ -276,19 +276,18 @@ class PymunkDemo(RelativeLayout):
         self.events = []
         self.events.append((10, self.big_ball))
         for x in range(8):
-            self.events.append((1+10*x, self.small_ball))
-        
+            self.events.append((1 + 10 * x, self.small_ball))
+
         self.events.append((200, self.big_ball))
         self.events.append((350, self.boxfloor))
         self.box_y = 150
         for x in range(8):
-            self.events.append((400+x*10, self.box))
+            self.events.append((400 + x * 10, self.box))
         self.events.append((650, self.car))
         self.events.append((850, self.cannon))
         self.events.append((1200, self.reset))
 
         self.update_event = Clock.schedule_interval(self.update, 1.0 / 20.)
-        
 
     def reset(self, *args):
         self.clear_widgets()
@@ -299,10 +298,10 @@ class PymunkDemo(RelativeLayout):
     def update(self, dt):
         stepdelay = 25
         for x in range(6):
-            self.space.step(1.0/60./2)
-            self.space.step(1.0/60./2)
+            self.space.step(1.0 / 60. / 2)
+            self.space.step(1.0 / 60. / 2)
             self.space.steps += 1
-            if len(self.events) > 0 and self.space.steps-stepdelay > self.events[0][0]:
+            if len(self.events) > 0 and self.space.steps - stepdelay > self.events[0][0]:
                 _, f = self.events.pop(0)
                 f(self.space)
 
@@ -312,7 +311,7 @@ class PymunkDemo(RelativeLayout):
                     body = shape.body
                     shape.ky[0].pos = body.position - (shape.radius, shape.radius)
                     circle_edge = body.position + Vec2d(shape.radius, 0).rotated(body.angle)
-                    shape.ky[1].points = [body.position.x, body.position.y, circle_edge.x,   circle_edge.y]
+                    shape.ky[1].points = [body.position.x, body.position.y, circle_edge.x, circle_edge.y]
                 if isinstance(shape, pymunk.Segment):
                     body = shape.body
                     p1 = body.position + shape.a.cpvrotate(body.rotation_vector)
@@ -327,7 +326,7 @@ class PymunkDemo(RelativeLayout):
             p = self.to_local(*touch.pos)
             d = self.touches[touch.uid]
 
-            d["line"].points = [d["start"][0] ,d["start"][1], p[0], p[1]]
+            d["line"].points = [d["start"][0], d["start"][1], p[0], p[1]]
             self.canvas.remove(d["line"])
 
             mass = 50
@@ -335,9 +334,9 @@ class PymunkDemo(RelativeLayout):
             moment = pymunk.moment_for_circle(mass, 0, radius)
             b = pymunk.Body(mass, moment)
             s = pymunk.Circle(b, radius)
-            s.color = .86,.2,.6
+            s.color = .86, .2, .6
             b.position = d["start"]
-            self.space.add(b,s)
+            self.space.add(b, s)
             impulse = 200 * (Vec2d(p) - Vec2d(d["start"]))
             b.apply_impulse_at_local_point(impulse)
             with self.canvas:
@@ -352,26 +351,25 @@ class PymunkDemo(RelativeLayout):
 
     def on_touch_down(self, touch):
         touch.grab(self)
-        
+
         p = self.to_local(*touch.pos)
         self.touches[touch.uid] = {"start": p}
-            
+
         with self.canvas:
-            Color(1,0,0,0.5)
-            line = Line(points = [p[0], p[1], p[0], p[1]], width = 15)
-            
+            Color(1, 0, 0, 0.5)
+            line = Line(points=[p[0], p[1], p[0], p[1]], width=15)
+
             self.touches[touch.uid]["line"] = line
 
         return True
 
-
     def ellipse_from_circle(self, shape):
         pos = shape.body.position - (shape.radius, shape.radius)
-        e = Ellipse(pos=pos, size=[shape.radius*2, shape.radius*2])
+        e = Ellipse(pos=pos, size=[shape.radius * 2, shape.radius * 2])
         circle_edge = shape.body.position + Vec2d(shape.radius, 0).rotated(shape.body.angle)
-        Color(.17,.24,.31)
-        l = Line(points = [shape.body.position.x, shape.body.position.y, circle_edge.x, circle_edge.y])
-        return e,l
+        Color(.17, .24, .31)
+        l = Line(points=[shape.body.position.x, shape.body.position.y, circle_edge.x, circle_edge.y])
+        return e, l
 
     def points_from_poly(self, shape):
         body = shape.body
@@ -384,15 +382,16 @@ class PymunkDemo(RelativeLayout):
 
 class MyApp(App):
     def build(self):
-        Window.clearcolor = (1,1,1,1)
+        Window.clearcolor = (1, 1, 1, 1)
         Window.set_title("Pymunk demo")
         demo = PymunkDemo()
-        demo.size_hint = 1,1
+        demo.size_hint = 1, 1
         demo.init()
-        demo.pos = 0,300
+        demo.pos = 0, 300
         l = FloatLayout()
         l.add_widget(demo)
         return l
-        
+
+
 if __name__ == '__main__':
     MyApp().run()

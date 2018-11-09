@@ -156,9 +156,9 @@ class MyApp(Tk):
                             m1 = volume(self.particules[idx].m)
                             m2 = volume(self.particules[closest].m)
                             self.particules[idx].v[0] = (self.particules[idx].v[0] * m1 + m2 * (
-                            self.particules[closest].v[0])) / (m1 + m2)
+                                self.particules[closest].v[0])) / (m1 + m2)
                             self.particules[idx].v[1] = (self.particules[idx].v[1] * m1 + m2 * (
-                            self.particules[closest].v[1])) / (m1 + m2)
+                                self.particules[closest].v[1])) / (m1 + m2)
                             self.particules[idx].m = m
             self.particules[idx].x += self.particules[idx].v[0] * self.dt
             self.particules[idx].y += self.particules[idx].v[1] * self.dt

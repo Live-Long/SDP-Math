@@ -1,11 +1,9 @@
-
-
 import pygame
 import sys
 
 pygame.init()
 
-FPS = 60 # frames per second setting
+FPS = 60  # frames per second setting
 fpsClock = pygame.time.Clock()
 
 # set up the window
@@ -14,6 +12,7 @@ pygame.display.set_caption('Mass Spring Damper System')
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+
 
 def run(k, c):
     delta_t = 0.1
@@ -48,11 +47,12 @@ def run(k, c):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                #sys.exit()
+                # sys.exit()
 
         pygame.display.update()
         fpsClock.tick(FPS)
 
-#parameter k and c
+
+# parameter k and c
 # k is spring constant c is damping constant
 run(0.5, 0.001)

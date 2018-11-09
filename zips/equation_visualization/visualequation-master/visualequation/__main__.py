@@ -32,6 +32,7 @@ from . import commons
 from . import game
 from .errors import ShowError
 
+
 class MainWindow(QMainWindow):
     def __init__(self, temp_dir):
         super().__init__()
@@ -70,9 +71,11 @@ class MainWindow(QMainWindow):
         copy_act.setShortcut('Ctrl+C')
         copy_act.setStatusTip('Copy selection')
         copy_act.triggered.connect(self.maineq.eq.sel2eqbuffer)
+
         def cut():
             self.maineq.eq.sel2eqbuffer()
             self.maineq.eq.remove_sel()
+
         cut_act = QAction('C&ut', self)
         cut_act.setShortcut('Ctrl+X')
         cut_act.setStatusTip('Cut selection')
@@ -92,16 +95,16 @@ class MainWindow(QMainWindow):
 
         activate_game_act = QAction('Invite &Alice', self, checkable=True)
         cmd = lambda state=activate_game_act.isChecked(): \
-              game.Game.activate(state)
+            game.Game.activate(state)
         activate_game_act.triggered.connect(cmd)
         activate_game_act.setStatusTip('Let Alice to be with you while'
-                                       +' building the equation')
+                                       + ' building the equation')
 
         menubar = self.menuBar()
         menubar.setNativeMenuBar(False)
         file_menu = menubar.addMenu('&File')
         file_menu.addAction(open_act)
-        file_menu.addAction(save_act)      
+        file_menu.addAction(save_act)
         file_menu.addAction(exit_act)
         edit_menu = menubar.addMenu('&Edit')
         edit_menu.addAction(undo_act)
@@ -148,17 +151,18 @@ class MainWindow(QMainWindow):
                 vbox.addWidget(text)
                 vbox.addWidget(buttons)
                 buttons.accepted.connect(self.accept)
+
         dialog = Dialog(self)
         dialog.exec_()
 
     def about(self):
         msg = "<p>Visual Equation</p>" \
-            + "<p><em>Version:</em> " + commons.VERSION + "</p>" \
-            + "<p><em>Author:</em> Daniel Molina</p>" \
-            + '<p><em>Sources:</em> ' \
-            + '<a href="https://github.com/daniel-molina/visualequation">' \
-            + "Webpage</a></p>" \
-            + "<p><em>License:</em> GPLv3 or above</p>"
+              + "<p><em>Version:</em> " + commons.VERSION + "</p>" \
+              + "<p><em>Author:</em> Daniel Molina</p>" \
+              + '<p><em>Sources:</em> ' \
+              + '<a href="https://github.com/daniel-molina/visualequation">' \
+              + "Webpage</a></p>" \
+              + "<p><em>License:</em> GPLv3 or above</p>"
         QMessageBox.about(self, "About", msg)
 
 
@@ -172,18 +176,19 @@ def main():
     parser.parse_args()
 
     # Catch all exceptions by installing a global exception hook
-    #sys._excepthook = sys.excepthook
+    # sys._excepthook = sys.excepthook
     def exception_hook(exctype, value, traceback_error):
-        #sys._excepthook(exctype, value, traceback_error)
+        # sys._excepthook(exctype, value, traceback_error)
         ShowError('Unhandled exception. Please, report this incident with '
                   + "the following traceback code:\n" +
                   ''.join(traceback.format_tb(traceback_error)),
                   True)
+
     sys.excepthook = exception_hook
 
     # Use global for app to be destructed at the end
     # http://pyqt.sourceforge.net/Docs/PyQt5/gotchas.html#crashes-on-exit
-    global app 
+    global app
     app = QApplication(sys.argv)
 
     # Prepare a temporal directory to manage all intermediate files
@@ -196,6 +201,7 @@ def main():
     exit_code = app.exec_()
     shutil.rmtree(temp_dirpath)
     sys.exit(exit_code)
-   
+
+
 if __name__ == '__main__':
     main()

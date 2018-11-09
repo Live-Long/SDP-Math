@@ -13,6 +13,7 @@
 
 from .utils import *
 
+
 def text(parent):
     class Dialog(QDialog):
         def __init__(self, parent=None):
@@ -53,7 +54,7 @@ def text(parent):
                 return (dialog.ledit.text(), True)
             else:
                 return (None, False)
-            
+
     text, ok = Dialog.get_text(parent)
     if ok:
         # Correct string
@@ -62,6 +63,7 @@ def text(parent):
         return r'\text{{' + text + '}}'
     else:
         return None
+
 
 def special_format(latex_command, label_text, only_capital=False):
     class Dialog(QDialog):
@@ -116,6 +118,7 @@ def special_format(latex_command, label_text, only_capital=False):
 
     return fun
 
+
 COLORS = [
     LatexSymb('black', 'black'),
     LatexSymb('blue', 'blue'),
@@ -148,6 +151,7 @@ def color(parent):
     else:
         return None
 
+
 def colorbox(parent):
     dialog = ChooseSymbDialog(parent, "Choose color", COLORS, 3)
     result = dialog.exec_()
@@ -156,6 +160,7 @@ def colorbox(parent):
                   + r'}}{{$\displaystyle {0}$}}')
     else:
         return None
+
 
 TEXT = [
     LatexSymb('text', text),

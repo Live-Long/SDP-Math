@@ -2,13 +2,15 @@
 import turtle
 import math
 
+
 def init():
     myPen = turtle.Turtle()
     myPen.speed(0)
 
     screen = turtle.Screen()
     screen.bgcolor("#000000")
-    return myPen,screen
+    return myPen, screen
+
 
 # A procedure to draw both the X and Y axis on screen
 def drawAxis(myPen):
@@ -22,6 +24,7 @@ def drawAxis(myPen):
     myPen.goto(0, -200)
     myPen.pendown()
     myPen.goto(0, 200)
+
 
 def drawFunc(func, myPen):
     pass
@@ -54,7 +57,6 @@ def drawLine(a, b, myPen):
 
 # Main Program Starts Here
 def run():
-
     myPen, screen = init()
     myPen.color("white")
     drawAxis(myPen)
@@ -62,5 +64,6 @@ def run():
     myPen.color("#FF59F7")
     drawLine(1.5, -40, myPen)
     screen.tracer(0)
+
 
 run()

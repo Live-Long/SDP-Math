@@ -1,9 +1,10 @@
-#http://barnesanalytics.com/bayesian-regression-with-pymc3-in-python
+# http://barnesanalytics.com/bayesian-regression-with-pymc3-in-python
 import pandas as pd
 import pymc3 as pm
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
+
 
 def run():
     try:
@@ -32,4 +33,6 @@ def run():
 
     except Exception:
         plt.destroy()
+
+
 run()

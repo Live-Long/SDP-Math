@@ -1,51 +1,55 @@
+from tkinter import *
+
 class Command:
-    def execute(self,root): pass
+    def execute(self, root): pass
+
 
 ##### PHYSICS COMMANDS ######
 
 class DoublePendulumCommand(Command):
-    def execute(self,root):
+    def execute(self, root):
         from phy import DoublePendulum
         root.execfile('DoublePendulum.py')
 
 
 class MasSpringDamperCommand(Command):
-    def execute(self,root):
+    def execute(self, root):
         from phy import mass_spring_damper
         root.execfile('mass_spring_damper.py')
 
 
 class MultiplePendulumCommand(Command):
-    def execute(self,root):
+    def execute(self, root):
         from phy import multiple_pendulum
         root.execfile('multiple_pendulum.py')
 
+
 class ParticleSimCommand(Command):
-    def execute(self,root):
+    def execute(self, root):
         from phy import particle_simulation
         root.execfile('particle_simulation.py')
 
 
 class PendulumCommand(Command):
-    def execute(self,root):
+    def execute(self, root):
         from phy import Pendulum
         root.execfile('Pendulum.py')
 
 
 class ProjectileCommand(Command):
-    def execute(self,root):
+    def execute(self, root):
         from phy import projectile_full
         root.execfile('projectile_full.py')
 
+
 class SolarCommand(Command):
-    def execute(self,root):
+    def execute(self, root):
         from phy import solar1
         root.execfile('solar1.py')
 
 
-
 class ClothMouse1Command(Command):
-    def execute(self,root):
+    def execute(self, root):
         from phy import verlet_cloth_system_mouse
         root.execfile('verlet_cloth_system_mouse.py')
 
@@ -62,11 +66,11 @@ class VerletParticleCommand(Command):
         root.execfile('verlet_particle.py')
 
 
-
 class VerletRigidBodyCommand(Command):
     def execute(self, root):
         from phy import verlet_rigid_body_mouse
         root.execfile('verlet_rigid_body_mouse.py')
+
 
 ##### PHYSICS 2 COMMANDS #####
 
@@ -86,6 +90,7 @@ class Box2DCommand(Command):
     def execute(self, root):
         from phy2 import box2d_vertical_stack
         root.execfile('box2d_vertical_stack.py')
+
 
 class BreakoutCommand(Command):
     def execute(self, root):
@@ -110,6 +115,7 @@ class FlipperCommand(Command):
         from phy2 import flipper
         root.execfile('flipper.py')
 
+
 class PlaygroundCommand(Command):
     def execute(self, root):
         from phy2 import playground
@@ -128,7 +134,6 @@ class SpiderwebCommand(Command):
         root.execfile('spiderweb.py')
 
 
-
 ##### MATH COMMANDS #####
 class BayesianRegressionCommand(Command):
 
@@ -139,33 +144,39 @@ class BayesianRegressionCommand(Command):
 
 class BrownianMotionCommand(Command):
     def execute(self, root):
-        from math_done import geometric_brownian_motion
-        root.execfile('geometric_brownian_motion.py')
+        from math_done import brownian_motion
+        root.execfile('brownian_motion.py')
+
 
 class DerivativesCommand(Command):
     def execute(self, root):
         from math_done import derivative
         root.execfile('derivative.py')
 
+
 class EqGrapherCommand(Command):
     def execute(self, root):
         from math_done import Eq_grapher
         root.execfile('Eq_grapher.py')
+
 
 class ExpDecayCommand(Command):
     def execute(self, root):
         from math_done import exponential_decay
         root.execfile('exponential_decay.py')
 
+
 class FermatsSpiralCommand(Command):
     def execute(self, root):
         from math_done import Fermat_spiral
         root.execfile('Fermat_spiral.py')
 
+
 class GeorgiasSpiralCommand(Command):
     def execute(self, root):
         from math_done import GeorgiasSpiral
         root.execfile('GeorgiasSpiral.py')
+
 
 class HistogramComand(Command):
     def execute(self, root):
@@ -177,6 +188,7 @@ class NewtonIterationCommand(Command):
     def execute(self, root):
         from math_done import newton_iteration
         root.execfile('newton_iteration.py')
+
 
 class RiemannSumCommand(Command):
     def execute(self, root):
@@ -194,14 +206,23 @@ class Plot3DCommand(Command):
 
 class AreaChartCommand(Command):
     def execute(self, root):
-        from math2 import area_chart
-        root.execfile('area_chart.py')
+        from math2 import chart_input
+        try:
+            print("Give Inputs")
+            root.execfile('chart_input.py')
+        except Exception:
+            return
 
 
 class BarChartCommand(Command):
     def execute(self, root):
-        from math2 import bar_chart
-        root.execfile('bar_chart.py')
+        from math2 import chart_input_adapter
+        try:
+            print("Give Inputs")
+            root.execfile('chart_input_adapter.py')
+        except Exception:
+            return
+
 
 class DonutPlotCommand(Command):
     def execute(self, root):
@@ -239,7 +260,6 @@ class MultipleLinesCommand(Command):
         root.execfile('multiple_lines_chart.py')
 
 
-
 ###### MISCELLANEOUS COMMANDS #######
 
 class BarnsleyCommand(Command):
@@ -253,11 +273,6 @@ class BubbleSortCommand(Command):
         from miscc import bubble_sort_UI
         root.execfile('bubble_sort_UI.py')
 
-class DragonCurveCommand(Command):
-    def execute(self, root):
-        from miscc import DragonCurve
-        root.execfile('DragonCurve.py')
-
 
 class FractalTreeCommand(Command):
     def execute(self, root):
@@ -265,26 +280,16 @@ class FractalTreeCommand(Command):
         root.execfile('FractalTree.py')
 
 
-class HilbertCommand(Command):
-    def execute(self, root):
-        from miscc import Hilbert
-        root.execfile('Hilbert.py')
-
 class HoneycombCommand(Command):
     def execute(self, root):
         from miscc import honeycomb
         root.execfile('honeycomb.py')
 
+
 class InteractiveMandelbrotCommand(Command):
     def execute(self, root):
         from miscc import InteractiveMandelbrot
         root.execfile('InteractiveMandelbrot.py')
-
-
-class LangtonLoopCommand(Command):
-    def execute(self, root):
-        from miscc import langtonloop
-        root.execfile('langtonloop.py')
 
 
 class LangtonAntCommand(Command):
@@ -298,10 +303,12 @@ class QuasiCrystalCommand(Command):
         from miscc import quasicrystal
         root.execfile('quasicrystal.py')
 
+
 class RainbowClickCommand(Command):
     def execute(self, root):
         from miscc import RainbowClick
         root.execfile('RainbowClick.py')
+
 
 class RainbowRainCommand(Command):
     def execute(self, root):
@@ -310,11 +317,12 @@ class RainbowRainCommand(Command):
 
 
 class RandomFractalCommand(Command):
-    def execute(self,root):
+    def execute(self, root):
         from miscc import RandomFractalSpiral
         root.execfile('RandomFractalSpiral.py')
 
+
 class SierPinskiCommand(Command):
-    def execute(self,root):
+    def execute(self, root):
         from miscc import Sierpinski
         root.execfile('Sierpinski.py')
