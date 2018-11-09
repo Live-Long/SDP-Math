@@ -59,7 +59,6 @@ def run_particle_sim():
     command.execute()
 
 
-
 def run_pendulum():
     command = PendulumCommand(root)
     command.execute()
@@ -68,7 +67,6 @@ def run_pendulum():
 def run_projectile():
     command = ProjectileCommand(root)
     command.execute()
-
 
 
 def run_solar():
@@ -96,7 +94,6 @@ def run_verlet_rigid_body():
     command.execute()
 
 
-
 ########   Physics 2 Functions   #########
 
 def run_arrow():
@@ -104,11 +101,9 @@ def run_arrow():
     command.execute()
 
 
-
 def run_balls_lines():
     command = BallsandLinesCommand(root)
     command.execute()
-
 
 
 def run_box2d_verticle():
@@ -116,11 +111,9 @@ def run_box2d_verticle():
     command.execute()
 
 
-
 def run_breakout():
     command = BreakoutCommand(root)
     command.execute()
-
 
 
 def run_copy_pickle():
@@ -128,11 +121,9 @@ def run_copy_pickle():
     command.execute()
 
 
-
 def run_flipper():
     command = FlipperCommand(root)
     command.execute()
-
 
 
 def run_deformable():
@@ -140,28 +131,20 @@ def run_deformable():
     command.execute()
 
 
-
 def run_playground():
     command = PlaygroundCommand(root)
     command.execute()
-
 
 
 def run_point_query():
     command = PointQueryCommand(root)
     command.execute()
 
-<<<<<<< HEAD
-
-def run_spiderweb():
-    command = SpiderwebCommand()
-    command.execute(root)
-=======
->>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882
 
 def run_spiderweb():
     command = SpiderwebCommand(root)
     command.execute()
+
 
 ########   Math Functions   #########
 def run_bayesian_regression():
@@ -271,17 +254,14 @@ def run_barnsley_fern():
     command.execute()
 
 
-
 def run_bubble_sort():
     command = BubbleSortCommand(root)
     command.execute()
 
 
-
 def run_fractal_tree():
     command = FractalTreeCommand(root)
     command.execute()
-
 
 
 def run_honeycomb():
@@ -292,7 +272,6 @@ def run_honeycomb():
 def run_mandelbrot():
     command = InteractiveMandelbrotCommand(root)
     command.execute()
-
 
 
 def run_langtons_ant():
@@ -320,11 +299,9 @@ def run_rainbow_rain_circle():
     command.execute()
 
 
-
 def run_random_fractals():
     command = RandomFractalCommand(root)
     command.execute()
-
 
 
 def run_siers_triangles():
