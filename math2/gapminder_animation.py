@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 import seaborn as sns
 
 sns.set_style("white")
@@ -32,8 +31,12 @@ for i in data.year.unique():
     plt.ylim(0, 100000)
     plt.xlim(30, 90)
 
+<<<<<<< HEAD
     # Save it
     # filename='Gapminder_step'+str(i)+'.png'
     # plt.savefig(filename, dpi=96)
+=======
+# Save it
+>>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882
     plt.gca()
     plt.show()

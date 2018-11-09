@@ -1,4 +1,3 @@
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from math2 import chart_input
@@ -13,6 +12,7 @@ def run(y):
     plt.fill_between(x, y, color="skyblue", alpha=0.4)
     plt.show()
 
+<<<<<<< HEAD
     # Same, but add a stronger line on top (edge)
     plt.fill_between(x, y, color="skyblue", alpha=0.2)
     plt.plot(x, y, color="Slateblue", alpha=0.6)
@@ -25,6 +25,11 @@ def run(y):
     plt.title("An area chart", loc="left")
     plt.xlabel("Value of X")
     plt.ylabel("Value of Y")
+=======
+# Make the same graph
+plt.fill_between(x, y, color="skyblue", alpha=0.3)
+plt.plot(x, y, color="skyblue")
+>>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882
 
     plt.show()
 

@@ -46,3 +46,5 @@ misc/RandomFractalSpiral.py
 misc/Sierpinski.py
 misc/bubble_sort.py
 misc/BarnsleyFern.py
+*.png
+*.png

@@ -6,6 +6,13 @@ from tkinter import *
 
 from PIL import ImageTk, Image
 
+<<<<<<< HEAD:math_done/brownian_motion.py
+=======
+def close_this_sht():
+    plt.gcf()
+    plt.clf()
+    #plt.close()
+>>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882:math_done/brownian_motion.py
 
 def gmb():
     S0 = 100  # initial stock price
@@ -50,7 +57,7 @@ def run():
 
     root.geometry('{}x{}'.format(imgx, imgy))
 
-    exitb = Button(root, text="Exit", bd=12, relief="raised", command=lambda: [root.destroy()], width=15)
+    exitb = Button(root, text="Exit", bd=12, relief="raised", command=lambda: [close_this_sht(), root.destroy()], width=15)
     exitb.configure(bg="gray", fg="white", font="Calibri 9 bold")
     exitb.grid(padx=10, pady=30)
 
@@ -62,7 +69,16 @@ def run():
     canvas.grid()
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
+<<<<<<< HEAD:math_done/brownian_motion.py
     # os.remove(imgName)
+=======
+
+    #os.remove(imgName)
+>>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882:math_done/brownian_motion.py
+
+    for event in root.event.get():
+        if event.type == root.QUIT:
+            root.destroy()
 
     root.mainloop()
 

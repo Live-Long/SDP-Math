@@ -40,208 +40,225 @@ from Commands import *
 
 
 def run_double_pendulum():
-    command = DoublePendulumCommand()
-    command.execute(root)
+    command = DoublePendulumCommand(root)
+    command.execute()
 
 
 def run_mass_spring_damper():
-    command = MasSpringDamperCommand()
-    command.execute(root)
+    command = MasSpringDamperCommand(root)
+    command.execute()
 
 
 def run_multiple_pendulum():
-    command = MultiplePendulumCommand()
-    command.execute(root)
+    command = MultiplePendulumCommand(root)
+    command.execute()
 
 
 def run_particle_sim():
-    command = ParticleSimCommand()
-    command.execute(root)
+    command = ParticleSimCommand(root)
+    command.execute()
+
 
 
 def run_pendulum():
-    command = PendulumCommand()
-    command.execute(root)
+    command = PendulumCommand(root)
+    command.execute()
 
 
 def run_projectile():
-    command = ProjectileCommand()
-    command.execute(root)
+    command = ProjectileCommand(root)
+    command.execute()
+
 
 
 def run_solar():
-    command = SolarCommand()
-    command.execute(root)
+    command = SolarCommand(root)
+    command.execute()
 
 
 def run_verlet_cloth_1():
-    command = ClothMouse1Command()
-    command.execute(root)
+    command = ClothMouse1Command(root)
+    command.execute()
 
 
 def run_verlet_cloth_2():
-    command = ClothMouse2Command()
-    command.execute(root)
+    command = ClothMouse2Command(root)
+    command.execute()
 
 
 def run_verlet_particle():
-    command = VerletParticleCommand()
-    command.execute(root)
+    command = VerletParticleCommand(root)
+    command.execute()
 
 
 def run_verlet_rigid_body():
-    command = VerletRigidBodyCommand()
-    command.execute(root)
+    command = VerletRigidBodyCommand(root)
+    command.execute()
+
 
 
 ########   Physics 2 Functions   #########
 
 def run_arrow():
-    command = ArrowsCommand()
-    command.execute(root)
+    command = ArrowsCommand(root)
+    command.execute()
+
 
 
 def run_balls_lines():
-    command = BallsandLinesCommand()
-    command.execute(root)
+    command = BallsandLinesCommand(root)
+    command.execute()
+
 
 
 def run_box2d_verticle():
-    command = Box2DCommand()
-    command.execute(root)
+    command = Box2DCommand(root)
+    command.execute()
+
 
 
 def run_breakout():
-    command = BreakoutCommand()
-    command.execute(root)
+    command = BreakoutCommand(root)
+    command.execute()
+
 
 
 def run_copy_pickle():
-    command = CopyPickleCommand()
-    command.execute(root)
+    command = CopyPickleCommand(root)
+    command.execute()
+
 
 
 def run_flipper():
-    command = FlipperCommand()
-    command.execute(root)
+    command = FlipperCommand(root)
+    command.execute()
+
 
 
 def run_deformable():
-    command = DeformableCommand()
-    command.execute(root)
+    command = DeformableCommand(root)
+    command.execute()
+
 
 
 def run_playground():
-    command = PlaygroundCommand()
-    command.execute(root)
+    command = PlaygroundCommand(root)
+    command.execute()
+
 
 
 def run_point_query():
-    command = PointQueryCommand()
-    command.execute(root)
+    command = PointQueryCommand(root)
+    command.execute()
 
+<<<<<<< HEAD
 
 def run_spiderweb():
     command = SpiderwebCommand()
     command.execute(root)
+=======
+>>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882
 
+def run_spiderweb():
+    command = SpiderwebCommand(root)
+    command.execute()
 
 ########   Math Functions   #########
 def run_bayesian_regression():
-    command = BayesianRegressionCommand()
-    command.execute(root)
+    command = BayesianRegressionCommand(root)
+    command.execute()
 
 
 def run_brownian_motion():
-    command = BrownianMotionCommand()
-    command.execute(root)
+    command = BrownianMotionCommand(root)
+    command.execute()
 
 
 def run_derivatives():
-    command = DerivativesCommand()
-    command.execute(root)
+    command = DerivativesCommand(root)
+    command.execute()
 
 
 def run_eq_grapher():
-    command = EqGrapherCommand()
-    command.execute(root)
+    command = EqGrapherCommand(root)
+    command.execute()
 
 
 def run_exponential_decay():
-    command = ExpDecayCommand()
-    command.execute(root)
+    command = ExpDecayCommand(root)
+    command.execute()
 
 
 def run_fermats_spiral():
-    command = FermatsSpiralCommand()
-    command.execute(root)
+    command = FermatsSpiralCommand(root)
+    command.execute()
 
 
 def run_georgias_spiral():
-    command = GeorgiasSpiralCommand()
-    command.execute(root)
+    command = GeorgiasSpiralCommand(root)
+    command.execute()
 
 
 def run_histogram():
-    command = HistogramComand()
-    command.execute(root)
+    command = HistogramComand(root)
+    command.execute()
 
 
 def run_newton_iteration():
-    command = NewtonIterationCommand()
-    command.execute(root)
+    command = NewtonIterationCommand(root)
+    command.execute()
 
 
 def run_riemann_sum():
-    command = RiemannSumCommand()
-    command.execute(root)
+    command = RiemannSumCommand(root)
+    command.execute()
 
 
 ########## Math 2 Functions #########
 
 def run_3D_plot():
-    command = Plot3DCommand()
-    command.execute(root)
+    command = Plot3DCommand(root)
+    command.execute()
 
 
 def run_area_chart():
-    command = AreaChartCommand()
-    command.execute(root)
+    command = AreaChartCommand(root)
+    command.execute()
 
 
 def run_bar_chart():
-    command = BarChartCommand()
-    command.execute(root)
+    command = BarChartCommand(root)
+    command.execute()
 
 
 def run_donut_plot():
-    command = DonutPlotCommand()
-    command.execute(root)
+    command = DonutPlotCommand(root)
+    command.execute()
 
 
 def run_gapminder_animation():
-    command = GapminderCommand()
-    command.execute(root)
+    command = GapminderCommand(root)
+    command.execute()
 
 
 def run_monte_carlo():
-    command = MonteCarloCommand()
-    command.execute(root)
+    command = MonteCarloCommand(root)
+    command.execute()
 
 
 def run_multiple_lines_chart():
-    command = MultipleLinesCommand()
-    command.execute(root)
+    command = MultipleLinesCommand(root)
+    command.execute()
 
 
 def run_scatter_plot():
-    command = ScatterPlotCommand()
-    command.execute(root)
+    command = ScatterPlotCommand(root)
+    command.execute()
 
 
 def run_taylor_series():
-    command = TaylorCommand()
-    command.execute(root)
+    command = TaylorCommand(root)
+    command.execute()
 
 
 #######################################
@@ -250,43 +267,47 @@ def run_taylor_series():
 ########   Misc Functions   #########
 
 def run_barnsley_fern():
-    command = BarnsleyCommand()
-    command.execute(root)
+    command = BarnsleyCommand(root)
+    command.execute()
+
 
 
 def run_bubble_sort():
-    command = BubbleSortCommand()
-    command.execute(root)
+    command = BubbleSortCommand(root)
+    command.execute()
+
 
 
 def run_fractal_tree():
-    command = FractalTreeCommand()
-    command.execute(root)
+    command = FractalTreeCommand(root)
+    command.execute()
+
 
 
 def run_honeycomb():
-    command = HoneycombCommand()
-    command.execute(root)
+    command = HoneycombCommand(root)
+    command.execute()
 
 
 def run_mandelbrot():
-    command = InteractiveMandelbrotCommand()
-    command.execute(root)
+    command = InteractiveMandelbrotCommand(root)
+    command.execute()
+
 
 
 def run_langtons_ant():
-    command = LangtonAntCommand()
-    command.execute(root)
+    command = LangtonAntCommand(root)
+    command.execute()
 
 
 def run_quasi_crystal():
-    command = QuasiCrystalCommand()
-    command.execute(root)
+    command = QuasiCrystalCommand(root)
+    command.execute()
 
 
 def run_rainbow_click():
-    command = RainbowClickCommand()
-    command.execute(root)
+    command = RainbowClickCommand(root)
+    command.execute()
 
 
 def run_rainbow_rain():
@@ -295,18 +316,20 @@ def run_rainbow_rain():
 
 
 def run_rainbow_rain_circle():
-    command = RainbowRainCommand()
-    command.execute(root)
+    command = RainbowRainCommand(root)
+    command.execute()
+
 
 
 def run_random_fractals():
-    command = RandomFractalCommand()
-    command.execute(root)
+    command = RandomFractalCommand(root)
+    command.execute()
+
 
 
 def run_siers_triangles():
-    command = SierPinskiCommand()
-    command.execute(root)
+    command = SierPinskiCommand(root)
+    command.execute()
 
 
 #############################################################
