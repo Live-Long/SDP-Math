@@ -40,7 +40,8 @@ def run():
     while mainloop:
         for event in pygame.event.get():
             if event.type == QUIT:
-                mainloop = False
+                #mainloop = False
+                pygame.quit()
         x, y = pygame.mouse.get_pos()
         cx = (x - mX) / scale + mx0
         cy = (H - y - mY) / scale + y0

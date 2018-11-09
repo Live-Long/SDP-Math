@@ -3,7 +3,7 @@ import pandas as pd
 import pymc3 as pm
 import matplotlib.pyplot as plt
 import numpy as np
-<<<<<<< HEAD
+
 import sys
 
 
@@ -37,13 +37,15 @@ def run():
 
 
 run()
-=======
+
 from matplotlib.widgets import Button
+
 
 def foo():
     plt.gcf()
     plt.clf()
-    #plt.close()
+    # plt.close()
+
 
 df = pd.read_csv('D:/SDP Math/math_done/thads2013n.txt', sep=',')  # needs Data Set
 df = df[df['BURDEN'] > 0]
@@ -69,16 +71,10 @@ with pm.Model() as model:
 
     foo = plt.close()
 
-    bnext = Button(foo,'Exit')
+    bnext = Button(foo, 'Exit')
     bnext.on_clicked(plt.close())
 
     plt.show()
-    #plt.clf()
+    # plt.clf()
 
     print(np.mean([1 if obj < 0 else 0 for obj in trace['x']]))
-
-
-
-
-
->>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882

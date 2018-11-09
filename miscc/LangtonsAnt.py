@@ -94,7 +94,7 @@ class Ant:
                 if createNode[1] > 0 and createNode[1] < self.height / self.node_size:
                     self.nodes[createNode] = 1
                     pygame.draw.rect(self.screen, self.pixel_color, (
-                        createNode[0] * self.node_size, createNode[1] * self.node_size, self.node_size, self.node_size))
+                    createNode[0] * self.node_size, createNode[1] * self.node_size, self.node_size, self.node_size))
 
     def event(self, event):
         if event.type == pygame.QUIT:
@@ -114,8 +114,12 @@ class Ant:
 
 
 def run():
-    ant = Ant()
-    ant.start()
+
+    try:
+        ant = Ant()
+        ant.start()
+    except Exception:
+        pygame.quit()
 
 
 run()

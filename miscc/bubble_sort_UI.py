@@ -91,7 +91,11 @@ class OpenNewWindow(Window):
 def run():
     root2 = tkinter.Tk()
     OpenNewWindow(root2)
-    root2.mainloop()
 
+    for event in root2.event.get():
+        if event.type == root2.QUIT:
+            root2.destroy()
+
+    root2.mainloop()
 
 run()

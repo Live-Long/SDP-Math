@@ -70,41 +70,47 @@ def highlightValues(myPen, list, position, color1, color2):
 
 # A function to sort a list using a Bubble Sort Algorithm
 def run(list):
-    myPen = turtle.Turtle()
+    try:
 
-    turtle.tracer(0)
-    myPen.speed(0)
-    myPen.color("#000000")
-    myPen.hideturtle()
+        myPen = turtle.Turtle()
 
-    global topLeft_y, intDim, gap
-    drawList(myPen, list, -1)
-    topLeft_y = topLeft_y - gap
-    drawList(myPen, list, -1)
-    topLeft_y = topLeft_y - gap
-    myPen.getscreen().update()
-    sleep(1)
-    numberOfIterations = 0
-    changed = True
-    while changed:
-        changed = False
-        for i in range(0, len(list) - numberOfIterations - 1):
-            highlightValues(myPen, list, i, "#FF4444", "#FF4444")
-            if list[i] > list[i + 1]:
-                highlightValues(myPen, list, i, "#00BEED", "#00BEED")
-                # swap values
-                list[i], list[i + 1] = list[i + 1], list[i]
-                highlightValues(myPen, list, i, "#00BEED", "#00BEED")
-                changed = True
-            if i >= len(list) - numberOfIterations:
-                highlightValues(myPen, list, i, "#FFFFFF", "#FFFFFF")
-            else:
-                highlightValues(myPen, list, i, "#FFFFFF", "#01E171")
+        turtle.tracer(0)
+        myPen.speed(0)
+        myPen.color("#000000")
+        myPen.hideturtle()
 
-        numberOfIterations += 1
-        drawList(myPen, list, numberOfIterations)
+        global topLeft_y, intDim, gap
+        drawList(myPen, list, -1)
+        topLeft_y = topLeft_y - gap
+        drawList(myPen, list, -1)
         topLeft_y = topLeft_y - gap
         myPen.getscreen().update()
-        sleep(0.5)
-    text(myPen, "Bubble Sort Complete", topLeft_x, topLeft_y, 20)
-    myPen.getscreen().update()
+        sleep(1)
+        numberOfIterations = 0
+        changed = True
+        while changed:
+            changed = False
+            for i in range(0, len(list) - numberOfIterations - 1):
+                highlightValues(myPen, list, i, "#FF4444", "#FF4444")
+                if list[i] > list[i + 1]:
+                    highlightValues(myPen, list, i, "#00BEED", "#00BEED")
+                    # swap values
+                    list[i], list[i + 1] = list[i + 1], list[i]
+                    highlightValues(myPen, list, i, "#00BEED", "#00BEED")
+                    changed = True
+                if i >= len(list) - numberOfIterations:
+                    highlightValues(myPen, list, i, "#FFFFFF", "#FFFFFF")
+                else:
+                    highlightValues(myPen, list, i, "#FFFFFF", "#01E171")
+
+            numberOfIterations += 1
+            drawList(myPen, list, numberOfIterations)
+            topLeft_y = topLeft_y - gap
+            myPen.getscreen().update()
+            sleep(0.5)
+        text(myPen, "Bubble Sort Complete", topLeft_x, topLeft_y, 20)
+        myPen.getscreen().update()
+
+
+    except Exception:
+        turtle.exitonclick()

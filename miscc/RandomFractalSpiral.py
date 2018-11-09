@@ -74,6 +74,11 @@ def run(arms):
     img = ImageTk.PhotoImage(Image.open(imgName))
     canvas.create_image(0, 0, anchor=NW, image=img)
     os.remove(imgName)
+
+    for event in root.event.get():
+        if event.type == root.QUIT:
+            root.destroy()
+
     root.mainloop()
 
 

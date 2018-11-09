@@ -47,10 +47,11 @@ def run():
         screen.fill(gray)
         for event in pygame.event.get():
             if event.type == QUIT:
-                mainloop = False
+                #mainloop = False
+                pygame.quit()
     #   pygame.time.wait(20)
     #   delay
-    pygame.quit()
+
 
 
 run()

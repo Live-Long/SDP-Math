@@ -1,9 +1,5 @@
-# turtle honeycomb
-# Lasse Kosiol
-# 1.9.2012
-# python workshop opentechschool berlin
-
 import turtle
+from turtle import *
 from random import randint
 
 size = 20
@@ -30,34 +26,38 @@ def hex():
 
 # start
 def run():
-    turtle.title("Simple Honeycomb")
-    turtle.showturtle()
-    turtle.hideturtle()
-    turtle.penup()
-    turtle.speed(0)
+
     try:
-        for circle in range(circles):
-            if circle == 0:
-                hex()
-                move(size, -60)
-                move(size, -60)
-                move(size, -60)
-                move(0, 180)
-            for i in range(6):
-                move(0, 60)
-                for j in range(circle + 1):
+        turtle.title("Simple Honeycomb")
+        turtle.showturtle()
+        turtle.hideturtle()
+        turtle.penup()
+        turtle.speed(0)
+        try:
+            for circle in range(circles):
+                if circle == 0:
                     hex()
                     move(size, -60)
-                    move(size, 60)
-                move(-size, 0)
-            move(-size, 60)
-            move(size, -120)
-            move(0, 60)
-    except turtle.Terminator:
-        print("Terminating")
-        # exit()
+                    move(size, -60)
+                    move(size, -60)
+                    move(0, 180)
+                for i in range(6):
+                    move(0, 60)
+                    for j in range(circle + 1):
+                        hex()
+                        move(size, -60)
+                        move(size, 60)
+                    move(-size, 0)
+                move(-size, 60)
+                move(size, -120)
+                move(0, 60)
+        except Exception:
+            print("Terminating")
+            turtle.done()
 
-    turtle.exitonclick()
+
+    except Exception:
+        turtle.done()
 
 
 run()

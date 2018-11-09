@@ -1,9 +1,4 @@
 import turtle
-<<<<<<< HEAD
-import math
-import random
-=======
->>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882
 
 wn = turtle.Screen()
 wn.bgcolor('black')

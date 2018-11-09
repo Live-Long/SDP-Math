@@ -55,6 +55,10 @@ def run():
     canvas.create_image(0, 0, anchor=NW, image=img)
     os.remove(imgName)
 
+    for event in root.event.get():
+        if event.type == root.QUIT:
+            root.destroy()
+
     root.mainloop()
 
 

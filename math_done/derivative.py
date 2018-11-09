@@ -5,16 +5,16 @@ from sympy.abc import x
 from tkinter import *
 from PIL import ImageTk, Image
 
-<<<<<<< HEAD
 f = x ** 3 - 2 * x - 6
-=======
+
+
 def close_this_sht():
     plt.gcf()
     plt.clf()
-    #plt.close()
+    # plt.close()
 
-f = x**3-2*x-6
->>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882
+
+f = x ** 3 - 2 * x - 6
 
 
 def init():
@@ -41,7 +41,7 @@ def run(f):
     root.title("Derivatives")
     root.geometry('{}x{}'.format(imgx, imgy))
 
-    exitb = Button(root, text="Exit", bd=12, relief="raised", command=lambda: [close_this_sht(),root.destroy()],
+    exitb = Button(root, text="Exit", bd=12, relief="raised", command=lambda: [close_this_sht(), root.destroy()],
                    width=15)
     exitb.configure(bg="gray", fg="white", font="Calibri 9 bold")
     exitb.pack(padx=10, pady=30)

@@ -30,6 +30,7 @@ def midpoint(point1, point2):
 def run(vertices, level):
     # the different colors we'll use to draw the fractals
     # in RGB format
+
     colors = [(0, 150, 189), (4, 150, 116), (216, 95, 30), (193, 33, 57), (129, 41, 199),
               (102, 205, 135), (51, 187, 204)]
     draw_triangle(vertices, colors[level])

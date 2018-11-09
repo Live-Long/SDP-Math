@@ -10,7 +10,6 @@ from tkinter import *
 from PIL import ImageTk, Image
 
 
-<<<<<<< HEAD
 def easy_function(x):
     return ((3) * (x ** 2))
 
@@ -28,17 +27,18 @@ def integrate(x1, x2, func=easy_function, n=100000):
     check = []
     xs = []
     ys = []
-=======
-def integrate(x1,x2,func=easy_function,n=100000):
-    X=np.linspace(x1,x2,1000)
-    y1=0
-    y2=max((func(X)))+1
-    print(x1,x2,y1,y2)
-    area=(x2-x1)*(y2-y1)
-    check=[]
-    xs=[]
-    ys=[]
->>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882
+
+
+def integrate(x1, x2, func=easy_function, n=100000):
+    X = np.linspace(x1, x2, 1000)
+    y1 = 0
+    y2 = max((func(X))) + 1
+    print(x1, x2, y1, y2)
+    area = (x2 - x1) * (y2 - y1)
+    check = []
+    xs = []
+    ys = []
+
     for i in range(n):
         x = np.random.uniform(x1, x2, 1)
         xs.append(x)

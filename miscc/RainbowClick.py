@@ -48,11 +48,14 @@ def draw_shape(x, y, spread=defaultSpread[0]):
 
 
 def run(number_of_turtles):
-    create_turtles(screen, number_of_turtles)
-    screen.onclick(draw_shape)
-    screen.listen()
-    turtle.done()
 
+    try:
+        create_turtles(screen, number_of_turtles)
+        screen.onclick(draw_shape)
+        screen.listen()
+        turtle.done()
+    except Exception:
+        turtle.done()
 
 number_of_turtles = 15
 run(number_of_turtles)

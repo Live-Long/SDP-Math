@@ -368,8 +368,8 @@ class AreaChartCommand(Command):
         self.root = root
 
     def execute(self):
-        from math2 import area_chart
-        self.root.execfile('area_chart.py')
+        from math2 import chart_input
+        self.root.execfile('chart_input.py')
 
 
 class BarChartCommand(Command):
@@ -379,8 +379,8 @@ class BarChartCommand(Command):
         self.root = root
 
     def execute(self):
-        from math2 import bar_chart
-        self.root.execfile('bar_chart.py')
+        from math2 import chart_input_adapter
+        self.root.execfile('chart_input_adapter.py')
 
 
 class DonutPlotCommand(Command):

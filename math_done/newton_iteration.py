@@ -35,7 +35,8 @@ x = np.linspace(0, 5, 100)
 def close_this_sht():
     plt.gcf()
     plt.clf()
-    #plt.close()
+    # plt.close()
+
 
 def run(f):
     plt.plot(x, f(x), 'black')
@@ -75,15 +76,13 @@ def run(f):
     canvas.pack()
     img = ImageTk.PhotoImage(Image.open(imgName), master=root)
     canvas.create_image(0, 0, anchor=NW, image=img)
-<<<<<<< HEAD
+
     # os.remove(imgName)
-=======
 
     for event in root.event.get():
         if event.type == root.QUIT:
             root.destroy()
 
->>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882
     root.mainloop()
 
 

@@ -114,13 +114,8 @@ class MyGui:  # (fold)
 # (end)
 
 def run():
-
-
     thegui = MyGui()
     thegui.initGui()
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 38ff9e01c38b13866ff5b2166f4ebe8f4b823882
 run()
